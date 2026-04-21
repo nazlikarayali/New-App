@@ -1,0 +1,120 @@
+// ============================================
+// JotForm Apps - App Header Component
+// ============================================
+
+.jf-app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  // icon(80) + gap(16) + title(~36) + gap(4) + subtitle(~24) + padding(48+64)
+  min-height: 272px;
+  padding: var(--space-12) var(--space-4);
+  background: var(--bg-fill-brand);
+  font-family: var(--font-family);
+}
+
+.jf-app-header__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 680px;
+  padding: 0 var(--space-8);
+
+  .jf-app-header--center & {
+    align-items: center;
+  }
+
+  .jf-app-header--left & {
+    align-items: flex-start;
+  }
+
+  .jf-app-header--right & {
+    align-items: flex-end;
+  }
+}
+
+.jf-app-header__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  background: var(--fg-inverse);
+  color: var(--fg-brand);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Skeleton
+.jf-app-header__icon-skeleton {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.jf-app-header__title-skeleton {
+  height: var(--line-height-heading-md);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.jf-app-header__subtitle-skeleton {
+  height: var(--line-height-label-lg);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.jf-app-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--fg-inverse);
+  white-space: nowrap;
+
+  .jf-app-header--center & {
+    align-items: center;
+    text-align: center;
+  }
+
+  .jf-app-header--left & {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .jf-app-header--right & {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.jf-app-header__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-heading-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-md);
+  letter-spacing: -0.588px;
+  color: var(--fg-inverse);
+  margin: 0;
+}
+
+.jf-app-header__subtitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-inverse);
+  opacity: 0.5;
+  margin: 0;
+
+  &--empty {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    opacity: 0;
+  }
+}

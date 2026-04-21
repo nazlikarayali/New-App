@@ -1,0 +1,315 @@
+// ============================================
+// TextArea Component
+// Source: Figma / Input — Text Area (node 1662:24062)
+// ============================================
+
+.jf-textarea {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  background: var(--background-white);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--navy-300);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-within {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    z-index: 1;
+  }
+
+  &:focus-within:hover {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Wrapper (flex-col, full height)
+  // ============================================
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  // ============================================
+  // Textarea field (flex-1, fills remaining space)
+  // Figma: Scrollbar track=12px, thumb=6px, color=navy-100, rounded
+  // ============================================
+  &__field {
+    display: flex;
+    flex: 1 0 0;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-darkest);
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+
+    &::placeholder {
+      color: var(--navy-200);
+    }
+
+    // Scrollbar — Figma: track 12px, thumb 6px w, navy-100 color, pill shape
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--navy-100);
+      border-radius: 100px;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy-100) transparent;
+  }
+
+  // ============================================
+  // Drag handle (bottom-right, 16x16)
+  // Figma: absolute, bottom=-1, right=-1, input-drag asset
+  // ============================================
+  &__drag {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    // Diagonal grip lines matching Figma input-drag asset
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 6L6 14' stroke='%23979DC6' stroke-linecap='round'/%3E%3Cpath d='M14 10L10 14' stroke='%23979DC6' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+  }
+
+  // ============================================
+  // Character count (bottom, right-aligned)
+  // ============================================
+  &__count {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 100%;
+    padding-bottom: var(--spacing-xs);
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  &__count-current,
+  &__count-limit {
+    color: var(--navy-200);
+  }
+
+  &__count-separator {
+    color: var(--navy-300);
+  }
+
+  // ============================================
+  // Size: Large (lg)
+  // Figma: h=140, pl=16, pr=8, py=12, font=16/24
+  // Count: font=14/20, gap=4, pb=8
+  // ============================================
+  &--lg {
+    height: 140px;
+
+    .jf-textarea__field {
+      padding: var(--spacing-sm) var(--spacing-xs) 0 var(--spacing-md);
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-textarea__count {
+      padding-right: var(--spacing-xs);
+      gap: var(--spacing-2xs);
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  // ============================================
+  // Size: Default (md)
+  // Figma: h=140, pl=12, pr=8, py=12, font=14/20
+  // Count: font=12/16, gap=2, pb=8
+  // ============================================
+  &--md {
+    height: 140px;
+
+    .jf-textarea__field {
+      padding: var(--spacing-sm) var(--spacing-xs) 0 var(--spacing-sm);
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-textarea__count {
+      padding-right: var(--spacing-xs);
+      gap: var(--spacing-3xs);
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-xs);
+    }
+  }
+
+  // ============================================
+  // Status: Error
+  // Figma: border error-default, shadow on default
+  // Hover: border stays, ring red-200 50%
+  // Focus: border stays, ring red-200 100%
+  // ============================================
+  &--error {
+    border-color: var(--error-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--error-default); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Read Only
+  // Figma: bg navy-25, border navy-50 (border-light)
+  // ============================================
+  &--readonly {
+    background: var(--navy-25);
+    border-color: var(--border-light);
+    &:hover {
+      border-color: var(--navy-300);
+      box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    }
+  }
+
+  // ============================================
+  // State: Disabled
+  // Figma: bg navy-50, no border, opacity 40%
+  // ============================================
+  &--disabled {
+    background: var(--navy-50);
+    border-color: transparent;
+    opacity: 0.4;
+    pointer-events: none;
+    &:hover { border-color: transparent; box-shadow: none; }
+  }
+
+  // ============================================
+  // Dark theme
+  // ============================================
+  // ============================================
+  // Dark theme
+  // Figma: Dark Text Area (node 1667:24089)
+  // Focus: blue-400 (#0099FF), ring blue-400 30%
+  // Scrollbar: gray-300 (#7F859C)
+  // Count gap: 2px for both sizes
+  // ============================================
+  [data-theme='dark'] & {
+    background: var(--gray-500);
+    border-color: transparent;
+
+    &:hover {
+      border-color: var(--gray-300);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus-within {
+      border-color: var(--blue-400);
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    &:focus-within:hover {
+      border-color: var(--blue-400);
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    .jf-textarea__field {
+      color: var(--core-white);
+      &::placeholder { color: var(--gray-200); }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--gray-300);
+      }
+      scrollbar-color: var(--gray-300) transparent;
+    }
+
+    .jf-textarea__drag {
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 6L6 14' stroke='%23A0A6B6' stroke-linecap='round'/%3E%3Cpath d='M14 10L10 14' stroke='%23A0A6B6' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    // Dark count gap is 2px for both sizes (differs from light lg which is 4px)
+    .jf-textarea__count {
+      gap: var(--spacing-3xs);
+    }
+
+    .jf-textarea__count-current,
+    .jf-textarea__count-limit {
+      color: var(--gray-200);
+    }
+
+    .jf-textarea__count-separator {
+      color: var(--gray-300);
+    }
+
+    &.jf-textarea--error {
+      border-color: var(--error-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.5);
+      }
+    }
+
+    &.jf-textarea--readonly {
+      background: var(--gray-500);
+      border-color: var(--gray-400);
+      &:hover {
+        border-color: var(--gray-300);
+        box-shadow: none;
+      }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--blue-400);
+        box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+      }
+    }
+
+    &.jf-textarea--disabled {
+      background: var(--gray-500);
+      border-color: transparent;
+      opacity: 0.4;
+      &:hover { border-color: transparent; box-shadow: none; }
+    }
+  }
+}

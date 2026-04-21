@@ -1,0 +1,107 @@
+// ============================================
+// Badge
+// Source: Figma / Badge
+// ============================================
+
+.jf-badge {
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  font-family: var(--font-family-circular);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-xs);
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .jf-icon {
+      width: inherit !important;
+      height: inherit !important;
+    }
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--spacing-2xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // ===== Sizes =====
+  &--sm {
+    height: 16px;
+    font-size: var(--font-size-xs);
+
+    .jf-badge__icon { width: 12px; height: 12px; }
+
+    &.jf-badge--rounded { padding: 0 6px; }
+    &.jf-badge--rectangle { padding: 0 2px; }
+  }
+
+  &--md {
+    height: 20px;
+    font-size: var(--font-size-xs);
+
+    .jf-badge__icon { width: 14px; height: 14px; }
+
+    &.jf-badge--rounded { padding: 0 var(--spacing-xs); }
+    &.jf-badge--rectangle { padding: 0 var(--spacing-2xs); }
+  }
+
+  &--lg {
+    height: 24px;
+    font-size: var(--font-size-sm);
+
+    .jf-badge__icon { width: 16px; height: 16px; }
+
+    &.jf-badge--rounded { padding: 0 var(--spacing-sm); }
+    &.jf-badge--rectangle { padding: 0 6px; }
+  }
+
+  // ===== Shapes =====
+  &--rounded { border-radius: var(--radius-rounded); }
+  &--rectangle { border-radius: var(--radius-sm); }
+
+  // ===== Subtle (20% tinted bg + black text) =====
+  &--subtle {
+    color: var(--core-black);
+
+    &.jf-badge--success { background: color-mix(in srgb, var(--success-dark) 20%, transparent); }
+    &.jf-badge--error { background: color-mix(in srgb, var(--error-dark) 20%, transparent); }
+    &.jf-badge--warning { background: color-mix(in srgb, var(--yellow-600) 20%, transparent); }
+    &.jf-badge--information { background: color-mix(in srgb, var(--accent-dark) 20%, transparent); }
+    &.jf-badge--neutral { background: color-mix(in srgb, var(--text-medium) 20%, transparent); }
+  }
+
+  // ===== Bold (solid bg + white text) =====
+  &--bold {
+    color: var(--core-white);
+
+    &.jf-badge--success { background: var(--success-default); }
+    &.jf-badge--error { background: var(--error-default); }
+    &.jf-badge--warning { background: var(--yellow-500); }
+    &.jf-badge--information { background: var(--accent-default); }
+    &.jf-badge--neutral { background: var(--text-medium); }
+  }
+}
+
+// ============================================
+// Dark mode — subtle becomes darker tint + light text
+// ============================================
+[data-theme='dark'] {
+  .jf-badge--subtle {
+    color: var(--core-white);
+
+    &.jf-badge--success { background: color-mix(in srgb, var(--success-default) 24%, transparent); }
+    &.jf-badge--error { background: color-mix(in srgb, var(--error-default) 24%, transparent); }
+    &.jf-badge--warning { background: color-mix(in srgb, var(--yellow-500) 24%, transparent); }
+    &.jf-badge--information { background: color-mix(in srgb, var(--accent-default) 24%, transparent); }
+    &.jf-badge--neutral { background: color-mix(in srgb, var(--gray-200) 24%, transparent); }
+  }
+}

@@ -1,0 +1,345 @@
+// ============================================
+// Number Input Component
+// Source: Figma / Input — Number
+// ============================================
+
+.jf-number-input {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  background: var(--background-white);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--navy-300);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-within {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    z-index: 1;
+  }
+
+  &:focus-within:hover {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Input field area
+  // ============================================
+  &__field-area {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    background: var(--background-white);
+    overflow: hidden;
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-darkest);
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    outline: none;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &::placeholder {
+      color: var(--navy-200);
+    }
+  }
+
+  &__unit {
+    flex-shrink: 0;
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-medium);
+    white-space: nowrap;
+  }
+
+  // ============================================
+  // Arrow addon (right side)
+  // ============================================
+  &__addon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    flex-shrink: 0;
+    width: 32px;
+    background: var(--navy-10);
+    padding: 1px 0;
+  }
+
+  &__arrow {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: var(--navy-75);
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.4;
+    }
+  }
+
+  // ============================================
+  // Sizes
+  // ============================================
+  &--lg {
+    height: 48px;
+
+    .jf-number-input__field-area {
+      padding: 0 var(--spacing-md);
+      gap: var(--spacing-sm);
+    }
+
+    .jf-number-input__field {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-number-input__unit {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.176px;
+    }
+  }
+
+  &--md {
+    height: 40px;
+
+    .jf-number-input__field-area {
+      padding: 0 var(--spacing-sm);
+      gap: var(--spacing-sm);
+    }
+
+    .jf-number-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-number-input__unit {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  &--sm {
+    height: 32px;
+
+    .jf-number-input__field-area {
+      padding: 0 var(--spacing-xs);
+      gap: var(--spacing-xs);
+    }
+
+    .jf-number-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-number-input__unit {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  // ============================================
+  // Status: Error
+  // ============================================
+  &--error {
+    border-color: var(--error-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--error-default); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Success
+  // ============================================
+  &--success {
+    border-color: var(--success-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--success-default); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--success-default);
+      box-shadow: 0 0 0 3px rgba(203, 251, 123, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Warning
+  // ============================================
+  &--warning {
+    border-color: var(--yellow-500);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--yellow-500); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--yellow-500);
+      box-shadow: 0 0 0 3px rgba(255, 220, 123, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Read Only
+  // ============================================
+  &--readonly {
+    background: var(--navy-25);
+
+    &:hover { box-shadow: none; }
+
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    }
+
+    .jf-number-input__field-area { background: var(--navy-25); }
+    .jf-number-input__addon { background: var(--navy-75); }
+    .jf-number-input__unit { color: var(--navy-200); }
+
+    .jf-number-input__arrow {
+      cursor: default;
+      &:hover { background: none; }
+    }
+  }
+
+  // ============================================
+  // State: Disabled
+  // ============================================
+  &--disabled {
+    background: var(--navy-50);
+    border-color: transparent;
+    opacity: 0.4;
+    pointer-events: none;
+
+    &:hover { border-color: transparent; box-shadow: none; }
+  }
+
+  // ============================================
+  // Dark theme
+  // Figma: Dark Number Input node 1410:14706
+  // ============================================
+  [data-theme='dark'] & {
+    background: transparent;
+    border-color: transparent;
+
+    // Hover: outer bg gray-700, border gray-300
+    &:hover {
+      background: var(--gray-700); // #292D3C
+      border-color: var(--gray-300);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    // Focus: border blue-400, ring blue-400 30%
+    &:focus-within {
+      border-color: var(--blue-400); // #0099FF
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    &:focus-within:hover {
+      background: transparent;
+      border-color: var(--blue-400);
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    .jf-number-input__field-area { background: var(--gray-500); } // #434A60
+    .jf-number-input__field {
+      color: var(--core-white);
+      &::placeholder { color: var(--gray-200); } // #A0A6B6
+    }
+    .jf-number-input__unit { color: var(--gray-200); }
+    .jf-number-input__addon { background: var(--gray-400); } // #4C536F solid
+    .jf-number-input__arrow {
+      color: var(--gray-200);
+      &:hover {
+        background: var(--gray-300);
+        color: var(--core-white);
+      }
+    }
+
+    // Error
+    &.jf-number-input--error {
+      border-color: var(--error-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--error-default); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+    }
+
+    // Success: ring green-300 30%
+    &.jf-number-input--success {
+      border-color: var(--success-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--success-default); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--success-default);
+        box-shadow: 0 0 0 3px rgba(168, 235, 56, 0.3); // green-300
+      }
+    }
+
+    // Warning: border yellow-400, ring yellow-300 30%
+    &.jf-number-input--warning {
+      border-color: var(--yellow-400); // #FFB629
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--yellow-400); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--yellow-400);
+        box-shadow: 0 0 0 3px rgba(255, 196, 44, 0.3); // yellow-300
+      }
+    }
+
+    &.jf-number-input--readonly {
+      background: transparent;
+      border-color: var(--gray-400); // #4C536F
+      .jf-number-input__field-area { background: var(--gray-500); }
+      .jf-number-input__addon { background: var(--gray-400); }
+      &:hover { border-color: var(--gray-400); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--blue-400);
+        box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+      }
+    }
+
+    &.jf-number-input--disabled {
+      background: var(--gray-500);
+      border-color: transparent;
+      opacity: 0.4;
+      &:hover { border-color: transparent; box-shadow: none; }
+    }
+  }
+}

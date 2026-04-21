@@ -1,0 +1,282 @@
+.jf-header {
+  width: 100%;
+  font-family: var(--font-family);
+}
+
+// ---- Top Bar ----
+.jf-header__topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 var(--space-5);
+  background: var(--bg-fill);
+  border-bottom: 1px solid var(--border);
+}
+
+// ---- Left Section ----
+.jf-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.jf-header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.jf-header__logo-desktop {
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.jf-header__logo-mobile {
+  display: none;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.jf-header__divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+.jf-header__product {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--fg-primary);
+}
+
+.jf-header__product-text {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+}
+
+// Mobile title (hidden on desktop)
+.jf-header__mobile-title {
+  display: none;
+}
+
+// ---- Center Section (desktop) ----
+.jf-header__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-0);
+}
+
+.jf-header__app-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-primary);
+}
+
+.jf-header__last-edited {
+  font-size: var(--font-size-label-sm);
+  line-height: var(--line-height-label-sm);
+  color: var(--fg-success);
+}
+
+// ---- Right Section ----
+.jf-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.jf-header__help {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-rounded);
+  background: none;
+  cursor: pointer;
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-label-sm);
+  color: var(--fg-secondary);
+
+  &:hover {
+    background: var(--bg-fill-hover);
+    border-color: var(--border-hover);
+  }
+}
+
+.jf-header__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-rounded);
+  border: 2px solid var(--fg-brand);
+  background: var(--bg-fill-secondary);
+  flex-shrink: 0;
+}
+
+// ---- Tab Bar ----
+.jf-header__tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  background: linear-gradient(90deg, #b686e7, #8d4fcc);
+  position: relative;
+}
+
+.jf-header__tabs {
+  display: flex;
+  align-items: center;
+}
+
+.jf-header__tab {
+  padding: var(--space-3) var(--space-8);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-md);
+  color: rgba(255, 255, 255, 0.64);
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-md);
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &--active {
+    background: #c19be7;
+    color: #fff;
+  }
+}
+
+// ---- Preview Toggle ----
+.jf-header__preview {
+  position: absolute;
+  right: var(--space-5);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.jf-header__preview-label {
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-label-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.jf-header__toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: var(--radius-rounded);
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  cursor: pointer;
+}
+
+.jf-header__toggle-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-rounded);
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.15s ease;
+}
+
+// ============================================
+// Mobile Responsive
+// ============================================
+@media (max-width: 768px) {
+  .jf-header__topbar {
+    height: 64px;
+    padding: 0 var(--space-4);
+  }
+
+  // Show icon, hide full logo on mobile
+  .jf-header__logo-desktop {
+    display: none;
+  }
+
+  .jf-header__logo-mobile {
+    display: block;
+  }
+
+  // Hide help button on mobile
+  .jf-header__help {
+    display: none;
+  }
+
+  // Hide desktop center section
+  .jf-header__center {
+    display: none;
+  }
+
+  // Show mobile title
+  .jf-header__mobile-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .jf-header__mobile-app-name {
+    font-size: var(--font-size-paragraph-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-paragraph-sm);
+    color: var(--fg-primary);
+  }
+
+  .jf-header__mobile-last-edited {
+    font-size: var(--font-size-label-xs);
+    line-height: var(--line-height-label-xs);
+    color: var(--fg-success);
+  }
+
+  // Hide product text, keep chevron
+  .jf-header__product-text {
+    display: none;
+  }
+
+  // Tab bar: full width tabs
+  .jf-header__tabs {
+    width: 100%;
+  }
+
+  .jf-header__tab {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-label-sm);
+    text-align: center;
+  }
+
+  // Hide preview toggle
+  .jf-header__preview {
+    display: none;
+  }
+}

@@ -1,0 +1,256 @@
+// ============================================
+// JotForm Apps - Button Component
+// ============================================
+// All tokens from Figma variables.json
+
+.jf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  position: relative;
+  outline: none;
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  // =========================================
+  // Size: Default (48px)
+  // =========================================
+  &--size-default {
+    min-height: 48px;
+    min-width: 160px;
+    max-width: 100%;
+    padding: var(--space-3);
+    gap: 0;
+
+    .jf-btn__label {
+      font-size: var(--font-size-label-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--line-height-label-lg);
+      max-height: var(--line-height-label-lg);
+      padding: 0 var(--space-2);
+    }
+
+    .jf-btn__icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // =========================================
+  // Size: Small (40px)
+  // =========================================
+  &--size-small {
+    min-height: 40px;
+    min-width: 100px;
+    max-width: 100%;
+    padding: var(--space-2);
+    gap: 4px;
+
+    .jf-btn__label {
+      font-size: var(--font-size-label-md);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-label-md);
+      max-height: var(--line-height-label-md);
+      padding: 0 4px;
+    }
+
+    .jf-btn__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // =========================================
+  // Corner Variants
+  // =========================================
+  &--corner-default {
+    border-radius: var(--radius-lg);
+
+    &.jf-btn--size-small {
+      border-radius: var(--radius-md);
+    }
+  }
+
+  &--corner-rounded {
+    border-radius: var(--radius-rounded);
+  }
+
+  // =========================================
+  // Variant: Default (Primary)
+  // =========================================
+  &--default {
+    background: var(--bg-fill-brand);
+    color: var(--fg-inverse);
+
+    &:hover,
+    &.jf-btn--hovered {
+      background: var(--bg-fill-brand-hover);
+    }
+
+    &.jf-btn--disabled {
+      background: var(--bg-fill-brand-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // =========================================
+  // Variant: Secondary
+  // =========================================
+  &--secondary {
+    background: var(--bg-fill-secondary);
+    color: var(--fg-primary);
+
+    &:hover,
+    &.jf-btn--hovered {
+      background: var(--bg-fill-secondary-hover);
+    }
+
+    &.jf-btn--disabled {
+      background: var(--neutral-50);
+      color: var(--fg-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // =========================================
+  // Variant: Outlined
+  // =========================================
+  &--outlined {
+    background: transparent;
+    color: var(--fg-primary);
+    border: 1px solid var(--border);
+
+    &:hover,
+    &.jf-btn--hovered {
+      background: var(--bg-fill-secondary);
+      border-color: var(--border-hover);
+    }
+
+    &.jf-btn--disabled {
+      border-color: var(--border);
+      color: var(--fg-disabled);
+      background: transparent;
+      cursor: not-allowed;
+    }
+  }
+
+  // =========================================
+  // Variant: Disabled (standalone)
+  // =========================================
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  // =========================================
+  // Shrinked
+  // =========================================
+  &--shrinked {
+    min-width: 0;
+  }
+
+  // =========================================
+  // Full Width
+  // =========================================
+  &--full-width {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// =========================================
+// Label
+// =========================================
+.jf-btn__label {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// =========================================
+// Icon
+// =========================================
+.jf-btn__icon {
+  flex-shrink: 0;
+}
+
+// =========================================
+// Icon Only Button
+// =========================================
+.jf-btn-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+
+  &--sm {
+    width: var(--space-8);
+    height: var(--space-8);
+    padding: var(--space-1);
+  }
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background 200ms ease, color 200ms ease;
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+  flex-shrink: 0;
+  outline: none;
+
+  // Corner
+  &--default {
+    border-radius: var(--radius-md);
+  }
+
+  &--rounded {
+    border-radius: var(--radius-rounded);
+  }
+
+  // Filled variant
+  &--filled {
+    background: var(--bg-fill-brand);
+    color: var(--fg-inverse);
+
+    &:hover,
+    &.jf-btn-icon--hovered {
+      background: var(--bg-fill-brand-hover);
+    }
+
+    &.jf-btn-icon--disabled {
+      background: var(--bg-fill-brand-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // Ghost variant (no bg)
+  &--ghost {
+    background: transparent;
+    color: var(--fg-brand);
+
+    &:hover,
+    &.jf-btn-icon--hovered {
+      background: var(--bg-surface-brand-hover);
+    }
+
+    &.jf-btn-icon--disabled {
+      color: var(--fg-disabled);
+      cursor: not-allowed;
+    }
+  }
+}
+
+.jf-btn-icon__icon {
+  flex-shrink: 0;
+}

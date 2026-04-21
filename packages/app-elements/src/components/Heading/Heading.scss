@@ -1,0 +1,99 @@
+// ============================================
+// JotForm Apps - Heading Component
+// ============================================
+
+.jf-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-family);
+  border-radius: var(--radius-sm);
+
+  &--left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  &--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &--shrinked {
+    width: 300px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+
+// =========================================
+// Title
+// =========================================
+.jf-heading__title {
+  font-family: var(--font-family-heading);
+  color: var(--fg-primary);
+  font-weight: var(--font-weight-bold);
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+
+  // Heading/H4/Bold - Large
+  &--large {
+    font-size: var(--font-size-heading-md);
+    line-height: var(--line-height-heading-md);
+    letter-spacing: -0.56px;
+    min-height: var(--line-height-heading-md);
+    max-height: 144px;
+  }
+
+  // Heading/H5/Bold - Medium
+  &--medium {
+    font-size: var(--font-size-heading-sm);
+    line-height: var(--line-height-heading-sm);
+    letter-spacing: -0.48px;
+    min-height: var(--line-height-heading-sm);
+    max-height: 128px;
+  }
+
+  // Heading/H6/Bold - Small
+  &--small {
+    font-size: var(--font-size-heading-xs);
+    line-height: var(--line-height-heading-xs);
+    letter-spacing: -0.4px;
+    min-height: var(--line-height-heading-xs);
+    max-height: 84px;
+  }
+}
+
+// =========================================
+// Subtitle: Label/Large/Regular
+// =========================================
+.jf-heading__subtitle {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  max-height: 96px;
+  min-height: var(--line-height-label-lg);
+  width: 100%;
+  margin: 0;
+
+  &--empty {
+    display: none;
+  }
+}

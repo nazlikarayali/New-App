@@ -1,0 +1,223 @@
+// ============================================
+// JotForm Apps - Card Component
+// ============================================
+// All tokens reference Figma variables.json
+// Using CSS custom properties for theming support
+
+// Base Card
+.jf-card {
+  background: var(--bg-fill);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family);
+  position: relative;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+  overflow: hidden;
+  width: 100%;
+
+  &--horizontal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3);
+  }
+
+  &--skeleton {
+    pointer-events: none;
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &--shrinked {
+    max-width: 300px;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+
+  &--hover,
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Image Area
+.jf-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-brand);
+  flex-shrink: 0;
+  overflow: hidden;
+
+  &--square {
+    width: 104px;
+    height: 104px;
+    border-radius: var(--radius-md);
+  }
+
+  &--circle {
+    width: 104px;
+    height: 104px;
+    border-radius: var(--radius-rounded);
+  }
+
+  &--icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+  }
+
+  &--square-header {
+    width: 100%;
+    height: 148px;
+    border-radius: 0;
+  }
+
+  &--circle-card {
+    width: 124px;
+    height: 124px;
+    border-radius: var(--radius-rounded);
+    align-self: center;
+    margin: var(--space-3);
+  }
+
+  &--icon-card {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    align-self: center;
+    margin-top: var(--space-3);
+  }
+}
+
+.jf-card__image-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-brand);
+
+  .jf-card__image--icon &,
+  .jf-card__image--icon-card & {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+// Content
+.jf-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+
+  &--centered {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+// Title: Label/Large/Bold
+.jf-card__title {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: var(--line-height-label-lg);
+  width: 100%;
+}
+
+// Description: Paragraph/Small/Regular
+.jf-card__description {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: var(--line-height-paragraph-sm);
+  width: 100%;
+}
+
+// Body wrapper for card layout
+.jf-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  width: 100%;
+
+  &--row {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
+// Action Icon Button
+.jf-card__action-icon {
+  width: var(--space-10);
+  height: var(--space-10);
+  background: var(--bg-fill-brand);
+  border-radius: var(--radius-md);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: var(--space-2);
+  color: var(--fg-inverse);
+  transition: background 200ms ease;
+
+  &:hover {
+    background: var(--bg-fill-brand-hover);
+  }
+}
+
+// Action Text Button
+.jf-card__action-button {
+  height: var(--space-10);
+  min-width: 100px;
+  background: var(--bg-fill-brand);
+  border-radius: var(--radius-md);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  flex-shrink: 0;
+  transition: background 200ms ease;
+  font-family: inherit;
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-md);
+  color: var(--fg-inverse);
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--bg-fill-brand-hover);
+  }
+
+  &--full {
+    width: 100%;
+  }
+}

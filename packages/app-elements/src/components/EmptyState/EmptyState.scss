@@ -1,0 +1,63 @@
+// ============================================
+// JotForm Apps - Empty State Component
+// ============================================
+
+.jf-empty-state {
+  width: 100%;
+  font-family: var(--font-family);
+  background: color-mix(in srgb, var(--bg-fill-brand) 10%, var(--bg-fill));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-2);
+  --_empty-fg: color-mix(in oklch, var(--bg-fill-brand), var(--fg-primary) 30%);
+  color: var(--_empty-fg);
+}
+
+.jf-empty-state__message {
+  font-size: var(--font-size-paragraph-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-md);
+  letter-spacing: -0.176px;
+  white-space: nowrap;
+
+  &--shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--_empty-fg) 0%,
+      var(--_empty-fg) 40%,
+      color-mix(in srgb, var(--_empty-fg) 40%, transparent) 50%,
+      var(--_empty-fg) 60%,
+      var(--_empty-fg) 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+}
+
+// =========================================
+// Spinner
+// =========================================
+.jf-empty-state__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid color-mix(in srgb, var(--_empty-fg) 30%, transparent);
+  border-top-color: var(--_empty-fg);
+  border-radius: var(--radius-rounded);
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}

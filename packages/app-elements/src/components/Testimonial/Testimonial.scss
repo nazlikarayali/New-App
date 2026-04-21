@@ -1,0 +1,121 @@
+// ============================================
+// JotForm Apps - Testimonial Component
+// ============================================
+
+.jf-testimonial {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  font-family: var(--font-family);
+
+  &--shrinked {
+    width: 300px;
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+}
+
+.jf-testimonial__card {
+  background: var(--bg-fill);
+  box-shadow: 0 0 2px 0 rgba(37, 45, 91, 0.04), 0 4px 8px 0 rgba(84, 95, 111, 0.16);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  overflow: hidden;
+}
+
+// Content - horizontal (default)
+.jf-testimonial__content {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  width: 100%;
+
+  &--vertical {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+// Avatar
+.jf-testimonial__avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-rounded);
+  background: var(--bg-surface-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-brand);
+  overflow: hidden;
+}
+
+.jf-testimonial__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Text
+.jf-testimonial__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+// Heading/H6/Bold
+.jf-testimonial__name {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-primary);
+  overflow: hidden;
+  max-height: 144px;
+  min-height: 36px;
+  margin: 0;
+}
+
+// Paragraph/XSmall/Regular
+.jf-testimonial__quote {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-primary);
+  overflow: hidden;
+  max-height: 144px;
+  min-height: 36px;
+  margin: 0;
+}
+
+// Navigation
+.jf-testimonial__nav {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.jf-testimonial__nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-rounded);
+  background: color-mix(in srgb, var(--fg-primary) 8%, var(--bg-fill));
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--fg-primary);
+  transition: background 200ms ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--fg-primary) 15%, var(--bg-fill));
+  }
+}

@@ -1,0 +1,101 @@
+// ============================================
+// App Preview — Mobile App Frame
+// ============================================
+
+.app-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-page);
+  overflow: auto;
+  padding: var(--space-8);
+}
+
+// ---- iPhone Frame ----
+.app-preview__frame {
+  width: 375px;
+  height: 812px;
+  min-height: 812px;
+  border-radius: 40px;
+  background: var(--bg-page);
+  box-shadow: var(--shadow-lg), inset 0 0 0 1px var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-family);
+}
+
+// ---- Status Bar ----
+.app-preview__statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-5);
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--fg-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}
+
+.app-preview__statusbar-icons {
+  display: flex;
+  gap: var(--space-1);
+}
+
+// ---- Scrollable Content ----
+.app-preview__content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-preview__page {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  // Scale down components to fit mobile frame
+  > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+// ---- Bottom Navigation ----
+.app-preview__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 64px;
+  flex-shrink: 0;
+  background: var(--bg-fill);
+  border-top: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+}
+
+.app-preview__nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-tertiary);
+  font-family: var(--font-family);
+  font-size: 10px;
+  padding: var(--space-1);
+
+  &--active {
+    color: var(--fg-brand);
+  }
+}
+
+.app-preview__nav-label {
+  font-weight: var(--font-weight-medium);
+}

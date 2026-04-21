@@ -1,0 +1,369 @@
+// ============================================
+// RadioButton Component
+// Source: Figma / Actions — Radio (node 1303:624)
+// ============================================
+
+.jf-radio {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  width: 100%;
+
+  // ============================================
+  // Hidden native input
+  // ============================================
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  // ============================================
+  // Control wrapper (centers radio vertically)
+  // ============================================
+  &__control-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  // ============================================
+  // Radio circle (outer)
+  // ============================================
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--background-white);
+    border: 2px solid var(--border-medium);
+    border-radius: 50%;
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  // ============================================
+  // Inner dot (visible when selected)
+  // ============================================
+  &__dot {
+    border-radius: 50%;
+    background: var(--core-white);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  // Selected state
+  &__input:checked ~ &__control {
+    background: var(--accent-default);
+    border-color: var(--accent-default);
+  }
+
+  &__input:checked ~ &__control &__dot {
+    opacity: 1;
+  }
+
+  // Hover
+  &:hover &__control {
+    border-color: var(--accent-default);
+  }
+
+  &:hover &__input:checked ~ &__control {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+
+  // Focus
+  &__input:focus-visible ~ &__control {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  &__input:checked:focus-visible ~ &__control {
+    background: var(--accent-default);
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Label wrapper (contains label + optional description)
+  // ============================================
+  &__label-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0 var(--spacing-2xs);
+  }
+
+  // ============================================
+  // Label text
+  // ============================================
+  &__label {
+    width: 100%;
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-darkest);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  // ============================================
+  // Description text (visible with --has-description)
+  // ============================================
+  &__description {
+    width: 100%;
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-medium);
+  }
+
+  // Has description: title becomes bold
+  &--has-description &__label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  // ============================================
+  // Info icon (right)
+  // ============================================
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--navy-300);
+  }
+
+  // ============================================
+  // Size: Small (sm)
+  // Figma: circle=16px, border=1.5px, dot=6px, text=14/20, gap=4
+  // ============================================
+  &--sm {
+    gap: var(--spacing-2xs);
+
+    .jf-radio__control-wrapper {
+      height: 24px;
+      width: 16px;
+    }
+
+    .jf-radio__control {
+      width: 16px;
+      height: 16px;
+      border-width: 1.5px;
+    }
+
+    .jf-radio__dot {
+      width: 6px;
+      height: 6px;
+    }
+
+    .jf-radio__label {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-radio__description {
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-xs);
+    }
+
+    .jf-radio__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Size: Default (md)
+  // Figma: circle=20px, border=2px, dot=8px, text=16/24, gap=8
+  // ============================================
+  &--md {
+    gap: var(--spacing-xs);
+
+    .jf-radio__control-wrapper {
+      height: 24px;
+      width: 20px;
+    }
+
+    .jf-radio__control {
+      width: 20px;
+      height: 20px;
+    }
+
+    .jf-radio__dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .jf-radio__label {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-radio__description {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-radio__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Size: Large (lg)
+  // Figma: circle=24px, border=2px, dot=8px, text=16/24, gap=8
+  // ============================================
+  &--lg {
+    gap: var(--spacing-xs);
+
+    .jf-radio__control-wrapper {
+      height: 24px;
+      width: 24px;
+    }
+
+    .jf-radio__control {
+      width: 24px;
+      height: 24px;
+    }
+
+    .jf-radio__dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .jf-radio__label {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-radio__description {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-radio__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Error
+  // ============================================
+  &--error {
+    .jf-radio__control {
+      border-color: var(--error-default);
+    }
+
+    &:hover .jf-radio__control {
+      border-color: var(--error-dark);
+    }
+
+    .jf-radio__input:focus-visible ~ .jf-radio__control {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  // ============================================
+  // Disabled
+  // ============================================
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+
+    .jf-radio__control {
+      opacity: 0.4;
+    }
+
+    .jf-radio__input:checked ~ .jf-radio__control {
+      opacity: 0.4;
+    }
+
+    .jf-radio__label {
+      color: var(--navy-200);
+    }
+
+    .jf-radio__description {
+      color: var(--navy-200);
+    }
+  }
+
+  // ============================================
+  // Dark theme
+  // ============================================
+  [data-theme='dark'] & {
+    // Figma: unselected bg=#292D3C (gray-700), border=#4C536F (gray-400)
+    .jf-radio__control {
+      background: var(--gray-700);
+      border-color: var(--gray-400);
+    }
+
+    .jf-radio__input:checked ~ .jf-radio__control {
+      background: var(--accent-default);
+      border-color: var(--accent-default);
+    }
+
+    &:hover .jf-radio__control {
+      border-color: var(--accent-default);
+    }
+
+    &:hover .jf-radio__input:checked ~ .jf-radio__control {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .jf-radio__input:focus-visible ~ .jf-radio__control {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3);
+    }
+
+    .jf-radio__label {
+      color: var(--core-white);
+    }
+
+    .jf-radio__description {
+      color: var(--gray-200);
+    }
+
+    .jf-radio__icon {
+      color: var(--gray-200);
+    }
+
+    &.jf-radio--error {
+      .jf-radio__control {
+        border-color: var(--error-default);
+      }
+
+      &:hover .jf-radio__control {
+        border-color: var(--error-dark);
+      }
+
+      .jf-radio__input:focus-visible ~ .jf-radio__control {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+    }
+
+    // Figma: disabled uses opacity 0.4 on label_wrapper, not color change
+    &.jf-radio--disabled {
+      .jf-radio__label-wrapper {
+        opacity: 0.4;
+      }
+    }
+  }
+}

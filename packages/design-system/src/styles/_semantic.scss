@@ -1,0 +1,236 @@
+// ============================================
+// JotForm Design System — Semantic Tokens
+// Source: Figma / 00. Foundations
+// References: _primitives.scss
+// ============================================
+
+:root {
+  // ---- Brand ----
+  --brand-white: var(--core-white);
+  --brand-yellow: var(--yellow-400);
+  --brand-orange: var(--orange-500);
+  --brand-blue: var(--blue-400);
+  --brand-dark: var(--navy-700);
+
+  // ---- Text ----
+  --text-white: var(--core-white);
+  --text-lightest: var(--navy-50);
+  --text-light: var(--navy-100);
+  --text-medium: var(--navy-300);
+  --text-dark: var(--navy-500);
+  --text-darkest: var(--navy-700);
+
+  // ---- Background ----
+  --background-white: var(--core-white);
+  --background-lightest: var(--navy-25);
+  --background-light: var(--navy-75);
+  --background-medium: var(--navy-100);
+  --background-dark: var(--navy-300);
+  --background-darkest: var(--navy-700);
+
+  // ---- Border ----
+  --border-light: var(--navy-50);
+  --border-medium: var(--navy-100);
+  --border-dark: var(--navy-500);
+  --border-darkest: var(--navy-700);
+
+  // ---- Accent ----
+  --accent-lightest: var(--blue-100);
+  --accent-light: var(--blue-300);
+  --accent-default: var(--blue-500);
+  --accent-dark: var(--blue-600);
+
+  // ---- Success ----
+  --success-lightest: var(--green-100);
+  --success-light: var(--green-200);
+  --success-default: var(--green-500);
+  --success-dark: var(--green-600);
+
+  // ---- Error ----
+  --error-lightest: var(--red-100);
+  --error-light: var(--red-200);
+  --error-default: var(--red-400);
+  --error-dark: var(--red-600);
+
+  // ============================================
+  // Secondary (Gray-based — side panels, neutral UI)
+  // ============================================
+
+  // ---- Secondary Text ----
+  --secondary-text-white: var(--core-white);
+  --secondary-text-lightest: var(--gray-100);
+  --secondary-text-light: var(--gray-200);
+  --secondary-text-medium: var(--gray-400);
+  --secondary-text-dark: var(--gray-600);
+  --secondary-text-darkest: var(--gray-700);
+
+  // ---- Secondary Background ----
+  --secondary-background-white: var(--core-white);
+  --secondary-background-lightest: var(--gray-400);
+  --secondary-background-light: var(--gray-500);
+  --secondary-background-medium: var(--gray-600);
+  --secondary-background-dark: var(--gray-700);
+  --secondary-background-darkest: var(--gray-800);
+
+  // ---- Secondary Border ----
+  --secondary-border-light: var(--gray-200);
+  --secondary-border-medium: var(--gray-400);
+  --secondary-border-dark: var(--gray-700);
+
+  // ============================================
+  // Product Colors
+  // ============================================
+
+  // ---- AI ----
+  --product-ai-light: #934BE4;
+  --product-ai-default: #7923DD;
+  --product-ai-dark: #621CB1;
+
+  // ---- Analytics ----
+  --product-analytics-light: #B9BEDF;
+  --product-analytics-default: #8F96CC;
+  --product-analytics-dark: #737CBF;
+
+  // ---- Approvals ----
+  --product-approvals-light: #008F75;
+  --product-approvals-default: #007862;
+  --product-approvals-dark: #006653;
+
+  // ---- Apps ----
+  --product-apps-light: var(--purple-300);
+  --product-apps-default: var(--purple-400);
+  --product-apps-dark: var(--purple-500);
+
+  // ---- Boards ----
+  --product-boards-light: var(--blue-400);
+  --product-boards-default: var(--blue-500);
+  --product-boards-dark: #0058A8;
+
+  // ---- Forms ----
+  --product-forms-light: var(--orange-400);
+  --product-forms-default: var(--orange-500);
+  --product-forms-dark: var(--orange-600);
+
+  // ---- Inbox ----
+  --product-inbox-light: #59BED2;
+  --product-inbox-default: #249BB4;
+  --product-inbox-dark: #1989A0;
+
+  // ---- Tables ----
+  --product-tables-light: #37C768;
+  --product-tables-default: #049E38;
+  --product-tables-dark: #007B2A;
+
+  // ---- Pages ----
+  --product-pages-light: #5887BF;
+  --product-pages-default: #034F96;
+  --product-pages-dark: #03294C;
+
+  // ---- PDF Editor ----
+  --product-pdf-light: #628EFF;
+  --product-pdf-default: #3E62C8;
+  --product-pdf-dark: #2F4EAD;
+
+  // ---- Reports ----
+  --product-reports-light: #728DDD;
+  --product-reports-default: #5369AB;
+  --product-reports-dark: #344067;
+
+  // ---- Sign ----
+  --product-sign-light: #94CD2A;
+  --product-sign-default: #7BB60F;
+  --product-sign-dark: #6DA900;
+
+  // ---- Teams ----
+  --product-teams-light: #303C77;
+  --product-teams-default: #18235C;
+  --product-teams-dark: #0C1540;
+
+  // ============================================
+  // Active Product (Apps)
+  // ============================================
+  --product-light: var(--product-apps-light);
+  --product-default: var(--product-apps-default);
+  --product-dark: var(--product-apps-dark);
+
+  // ============================================
+  // Typography Hierarchies
+  // ============================================
+
+  // ---- Heading 1 (Bold) ----
+  --h1-size: var(--font-size-3xl);
+  --h1-line-height: var(--line-height-2xl);
+  --h1-letter-spacing: var(--letter-spacing-3xs);
+  --h1-weight: var(--font-weight-bold);
+
+  // ---- Heading 2 (Bold) ----
+  --h2-size: var(--font-size-2xl);
+  --h2-line-height: var(--line-height-xl);
+  --h2-letter-spacing: var(--letter-spacing-2xs);
+  --h2-weight: var(--font-weight-bold);
+
+  // ---- Heading 3 (Medium) ----
+  --h3-size: var(--font-size-xl);
+  --h3-line-height: var(--line-height-lg);
+  --h3-letter-spacing: var(--letter-spacing-xs);
+  --h3-weight: var(--font-weight-medium);
+
+  // ---- Heading 4 (Medium) ----
+  --h4-size: var(--font-size-lg);
+  --h4-line-height: var(--line-height-md);
+  --h4-letter-spacing: var(--letter-spacing-sm);
+  --h4-weight: var(--font-weight-medium);
+
+  // ---- Heading 5 (Medium) ----
+  --h5-size: var(--font-size-md);
+  --h5-line-height: var(--line-height-md);
+  --h5-letter-spacing: var(--letter-spacing-md);
+  --h5-weight: var(--font-weight-medium);
+
+  // ---- Heading 6 (Medium) ----
+  --h6-size: var(--font-size-sm);
+  --h6-line-height: var(--line-height-sm);
+  --h6-letter-spacing: var(--letter-spacing-lg);
+  --h6-weight: var(--font-weight-medium);
+
+  // ---- Heading 7 (Medium) ----
+  --h7-size: var(--font-size-xs);
+  --h7-line-height: var(--line-height-xs);
+  --h7-letter-spacing: var(--letter-spacing-xl);
+  --h7-weight: var(--font-weight-medium);
+
+  // ---- Body Large (Book, Bold) ----
+  --body-lg-size: var(--font-size-lg);
+  --body-lg-line-height: var(--line-height-md);
+  --body-lg-letter-spacing: var(--letter-spacing-sm);
+
+  // ---- Body (Book, Bold) ----
+  --body-size: var(--font-size-md);
+  --body-line-height: var(--line-height-md);
+  --body-letter-spacing: var(--letter-spacing-md);
+
+  // ---- Body Small (Book, Bold) ----
+  --body-sm-size: var(--font-size-sm);
+  --body-sm-line-height: var(--line-height-sm);
+  --body-sm-letter-spacing: var(--letter-spacing-lg);
+
+  // ---- Caption (Book, Bold) ----
+  --caption-size: var(--font-size-xs);
+  --caption-line-height: var(--line-height-xs);
+  --caption-letter-spacing: var(--letter-spacing-xl);
+
+  // ---- Caption Small (Book, Bold) ----
+  --caption-sm-size: var(--font-size-2xs);
+  --caption-sm-line-height: var(--line-height-xs);
+  --caption-sm-letter-spacing: var(--letter-spacing-2xl);
+
+  // ---- Label (Book, Medium) ----
+  --label-size: var(--font-size-md);
+  --label-line-height: var(--line-height-xs);
+  --label-letter-spacing: var(--letter-spacing-md);
+
+  // ---- Label Small (Book, Medium) ----
+  --label-sm-size: var(--font-size-sm);
+  --label-sm-line-height: var(--line-height-xs);
+  --label-sm-letter-spacing: var(--letter-spacing-lg);
+}

@@ -1,0 +1,145 @@
+// ============================================
+// Text Link
+// Source: Figma / Text Link (Small / Large × Primary / Constructive / Destructive)
+// ============================================
+
+.jf-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: var(--font-family-circular);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  letter-spacing: -0.006em;
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--spacing-2xs);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+    line-height: var(--line-height-xs);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+
+    .jf-icon {
+      width: inherit !important;
+      height: inherit !important;
+    }
+  }
+
+  // ===== Size: Large (14/16) =====
+  &--lg {
+    font-size: var(--font-size-sm);
+
+    .jf-link__label {
+      padding: 0 var(--spacing-2xs);
+    }
+  }
+
+  // ===== Size: Small (12/16) =====
+  &--sm {
+    font-size: var(--font-size-xs);
+    letter-spacing: -0.011em;
+
+    .jf-link__label {
+      padding: 0 2px;
+    }
+  }
+
+  // ===== Color: Primary =====
+  &--primary {
+    color: var(--accent-default);
+
+    &:hover:not(.jf-link--disabled) {
+      color: var(--accent-dark);
+      .jf-link__label { border-bottom-color: var(--accent-dark); }
+    }
+
+    &:focus-visible {
+      color: var(--accent-dark);
+      background: var(--accent-lightest);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--blue-200) 50%, transparent);
+      .jf-link__label { border-bottom-color: var(--accent-dark); }
+    }
+  }
+
+  // ===== Color: Constructive =====
+  &--constructive {
+    color: var(--success-default);
+
+    &:hover:not(.jf-link--disabled) {
+      color: var(--success-dark);
+      .jf-link__label { border-bottom-color: var(--success-dark); }
+    }
+
+    &:focus-visible {
+      color: var(--success-dark);
+      background: var(--success-lightest);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--green-200) 50%, transparent);
+      .jf-link__label { border-bottom-color: var(--success-dark); }
+    }
+  }
+
+  // ===== Color: Destructive =====
+  &--destructive {
+    color: var(--error-default);
+
+    &:hover:not(.jf-link--disabled) {
+      color: var(--error-dark);
+      .jf-link__label { border-bottom-color: var(--error-dark); }
+    }
+
+    &:focus-visible {
+      color: var(--error-dark);
+      background: var(--error-lightest);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--red-200) 50%, transparent);
+      .jf-link__label { border-bottom-color: var(--error-dark); }
+    }
+  }
+
+  // ===== Disabled =====
+  &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// ============================================
+// Dark mode
+// ============================================
+[data-theme='dark'] {
+  .jf-link {
+    &--primary:focus-visible {
+      background: color-mix(in srgb, var(--accent-default) 24%, transparent);
+    }
+
+    &--constructive:focus-visible {
+      background: color-mix(in srgb, var(--success-default) 24%, transparent);
+    }
+
+    &--destructive:focus-visible {
+      background: color-mix(in srgb, var(--error-default) 24%, transparent);
+    }
+  }
+}

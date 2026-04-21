@@ -1,0 +1,291 @@
+// ============================================
+// URL Input Component
+// Source: Figma / Input — URL
+// ============================================
+
+.jf-url-input {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background: var(--background-white);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--navy-300);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-within {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    z-index: 1;
+  }
+
+  &:focus-within:hover {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Addon (https:// prefix)
+  // ============================================
+  &__addon {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    background: var(--navy-25);
+  }
+
+  &__prefix {
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-medium);
+    white-space: nowrap;
+  }
+
+  // ============================================
+  // Input field
+  // ============================================
+  &__field {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-darkest);
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    outline: none;
+
+    &::placeholder {
+      color: var(--navy-200);
+    }
+  }
+
+  // ============================================
+  // Copy button
+  // ============================================
+  &__copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--navy-200);
+    cursor: pointer;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--text-darkest);
+    }
+  }
+
+  // ============================================
+  // Sizes
+  // ============================================
+  &--lg {
+    height: 48px;
+    gap: var(--spacing-sm);
+    padding-right: var(--spacing-md);
+
+    .jf-url-input__addon { padding: 0 var(--spacing-md); }
+    .jf-url-input__prefix {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.176px;
+    }
+    .jf-url-input__field {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+  }
+
+  &--md {
+    height: 40px;
+    gap: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+
+    .jf-url-input__addon { padding: 0 var(--spacing-sm); }
+    .jf-url-input__prefix {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.084px;
+    }
+    .jf-url-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  &--sm {
+    height: 32px;
+    gap: var(--spacing-xs);
+    padding-right: var(--spacing-xs);
+
+    .jf-url-input__addon { padding: 0 var(--spacing-xs); }
+    .jf-url-input__prefix {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-xs);
+      letter-spacing: -0.084px;
+    }
+    .jf-url-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  // ============================================
+  // Status variants
+  // ============================================
+  &--error {
+    border-color: var(--error-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--error-default); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  &--success {
+    border-color: var(--success-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--success-default); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--success-default);
+      box-shadow: 0 0 0 3px rgba(203, 251, 123, 0.5);
+    }
+  }
+
+  &--warning {
+    border-color: var(--yellow-500);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    &:hover { border-color: var(--yellow-500); box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--yellow-500);
+      box-shadow: 0 0 0 3px rgba(255, 220, 123, 0.5);
+    }
+  }
+
+  &--readonly {
+    background: var(--navy-25);
+    &:hover { box-shadow: none; }
+    &:focus-within, &:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    }
+    .jf-url-input__addon { background: var(--navy-50); }
+  }
+
+  &--disabled {
+    background: var(--navy-50);
+    border-color: transparent;
+    opacity: 0.4;
+    pointer-events: none;
+    &:hover { border-color: transparent; box-shadow: none; }
+  }
+
+  // ============================================
+  // Dark theme
+  // Figma: Dark URL Input node 1410:14545
+  // ============================================
+  [data-theme='dark'] & {
+    background: var(--gray-500); // #434A60
+    border-color: transparent;
+
+    // Hover: border gray-300, shadow Input Dark
+    &:hover {
+      border-color: var(--gray-300); // #7F859C
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    // Focus: border blue-400, ring blue-400 30%
+    &:focus-within {
+      border-color: var(--blue-400); // #0099FF
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    &:focus-within:hover {
+      border-color: var(--blue-400);
+      box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+    }
+
+    // Addon: bg gray-400 50% opacity overlay
+    .jf-url-input__addon {
+      background: rgba(76, 83, 111, 0.5); // gray-400 50%
+    }
+
+    // Addon prefix text: gray-300
+    .jf-url-input__prefix { color: var(--gray-300); } // #7F859C
+
+    // Text/placeholder
+    .jf-url-input__field {
+      color: var(--core-white);
+      &::placeholder { color: var(--gray-200); } // #A0A6B6
+    }
+
+    // Copy icon
+    .jf-url-input__copy { color: var(--gray-200); }
+    .jf-url-input__copy:hover { color: var(--core-white); }
+
+    // Error: border error-default, ring #DC2626 30%
+    &.jf-url-input--error {
+      border-color: var(--error-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--error-default); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+    }
+
+    // Success: border success-default, ring green-300 30%
+    &.jf-url-input--success {
+      border-color: var(--success-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--success-default); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--success-default);
+        box-shadow: 0 0 0 3px rgba(168, 235, 56, 0.3); // green-300
+      }
+    }
+
+    // Warning: border yellow-400, ring yellow-300 30%
+    &.jf-url-input--warning {
+      border-color: var(--yellow-400);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      &:hover { border-color: var(--yellow-400); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--yellow-400);
+        box-shadow: 0 0 0 3px rgba(255, 196, 44, 0.3); // yellow-300
+      }
+    }
+
+    // ReadOnly: border gray-400
+    &.jf-url-input--readonly {
+      background: var(--gray-500);
+      border-color: var(--gray-400); // #4C536F
+      &:hover { border-color: var(--gray-400); box-shadow: none; }
+      &:focus-within, &:focus-within:hover {
+        border-color: var(--blue-400);
+        box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3);
+      }
+    }
+
+    // Disabled
+    &.jf-url-input--disabled {
+      background: var(--gray-500);
+      border-color: transparent;
+      opacity: 0.4;
+      &:hover { border-color: transparent; box-shadow: none; }
+    }
+  }
+}

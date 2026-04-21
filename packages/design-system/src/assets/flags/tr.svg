@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="contents">
+<path id="background" fill-rule="evenodd" clip-rule="evenodd" d="M0 0V12H16V0H0Z" fill="var(--fill-0, #E31D1C)"/>
+<mask id="mask0_0_4" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="12">
+<path id="background_2" fill-rule="evenodd" clip-rule="evenodd" d="M0 0V12H16V0H0Z" fill="var(--fill-0, white)"/>
+</mask>
+<g mask="url(#mask0_0_4)">
+<path id="Combined shape 1695" d="M7.87516 2.04252C8.80165 2.04098 9.93144 2.58091 10.2567 3.34882C10.2436 3.34131 9.21331 2.75331 8.04384 3.0329C6.86689 3.3143 6.12256 4.35389 6.11345 5.58358C6.10389 6.89688 6.94198 7.79283 8.01237 8.05667C9.0745 8.31833 10.1937 7.70285 10.2114 7.69304C10.0739 8.10034 9.41064 9.05818 8.01134 9.06075C6.26543 9.06367 4.27935 7.80057 4.29578 5.58307C4.31168 3.44421 6.15057 2.04541 7.87516 2.04252ZM11.2052 4.92137L12.3141 4.54747L11.6333 5.49895L12.6715 6.3921L11.3611 6.29679L10.568 7.24827L10.5888 5.98014L9.38493 5.5548L10.4515 5.16308L10.4114 4.03958L11.2052 4.92137Z" fill="var(--fill-0, #F7FCFF)"/>
+</g>
+</g>
+</svg>

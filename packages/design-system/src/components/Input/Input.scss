@@ -1,0 +1,347 @@
+// ============================================
+// Input Component — Basic (Light)
+// Source: Figma / Input — Field
+// ============================================
+
+.jf-input {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background: var(--background-white);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  // ============================================
+  // State: Hover — border navy-300, shadow Input White
+  // ============================================
+  &:hover {
+    border-color: var(--navy-300);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  // ============================================
+  // State: Focus — border accent-default, ring blue-200 50%
+  // ============================================
+  &:focus-within {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  &:focus-within:hover {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Input field
+  // ============================================
+  &__field {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-darkest);
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    outline: none;
+
+    &::placeholder {
+      color: var(--navy-200);
+    }
+  }
+
+  // ============================================
+  // Left / Right content slots
+  // ============================================
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--navy-200);
+
+    .jf-icon {
+      width: inherit !important;
+      height: inherit !important;
+    }
+  }
+
+  // ============================================
+  // Size: Large (48px)
+  // Font: Body/Default — 16px/24px
+  // ============================================
+  &--lg {
+    height: 48px;
+    padding: 0 var(--spacing-md);
+    gap: var(--spacing-sm);
+
+    .jf-input__field {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-input__left,
+    .jf-input__right {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Size: Default/Medium (40px)
+  // Font: Body Small/Default — 14px/20px
+  // ============================================
+  &--md {
+    height: 40px;
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-sm);
+
+    .jf-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-input__left,
+    .jf-input__right {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // ============================================
+  // Size: Small (32px)
+  // Font: Body Small/Default — 14px/20px
+  // ============================================
+  &--sm {
+    height: 32px;
+    padding: 0 var(--spacing-xs);
+    gap: var(--spacing-xs);
+
+    .jf-input__field {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-input__left,
+    .jf-input__right {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // ============================================
+  // Status: Error — border error-default, ring red-200 50%
+  // ============================================
+  &--error {
+    border-color: var(--error-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      border-color: var(--error-default);
+      box-shadow: none;
+    }
+
+    &:focus-within,
+    &:focus-within:hover {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Success — border success-default, ring green-200 50%
+  // ============================================
+  &--success {
+    border-color: var(--success-default);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      border-color: var(--success-default);
+      box-shadow: none;
+    }
+
+    &:focus-within,
+    &:focus-within:hover {
+      border-color: var(--success-default);
+      box-shadow: 0 0 0 3px rgba(203, 251, 123, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Warning — border yellow-500, ring yellow-200 50%
+  // ============================================
+  &--warning {
+    border-color: var(--yellow-500);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      border-color: var(--yellow-500);
+      box-shadow: none;
+    }
+
+    &:focus-within,
+    &:focus-within:hover {
+      border-color: var(--yellow-500);
+      box-shadow: 0 0 0 3px rgba(255, 220, 123, 0.5);
+    }
+  }
+
+  // ============================================
+  // Status: Read Only — bg navy-25, border border-medium
+  // ============================================
+  &--readonly {
+    background: var(--navy-25);
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &:focus-within,
+    &:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+    }
+  }
+
+  // ============================================
+  // State: Disabled — bg navy-50, opacity 0.4
+  // ============================================
+  &--disabled {
+    background: var(--navy-50);
+    border-color: transparent;
+    opacity: 0.4;
+    pointer-events: none;
+
+    &:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  // ============================================
+  // Dark theme overrides
+  // Figma: Dark Input Field node 1384:2964
+  // ============================================
+  [data-theme='dark'] & {
+    // Default: bg gray-500, no border
+    background: var(--gray-500);
+    border-color: transparent;
+
+    // Hover: border gray-300, shadow Input Dark
+    &:hover {
+      border-color: var(--gray-300);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    // Focus: border accent-default, ring accent-default 30%
+    &:focus-within {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3);
+    }
+
+    &:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3);
+    }
+
+    // Text & placeholder
+    .jf-input__field {
+      color: var(--core-white);
+
+      &::placeholder {
+        color: var(--gray-200);
+      }
+    }
+
+    .jf-input__left,
+    .jf-input__right {
+      color: var(--gray-200);
+    }
+
+    // Status: Error
+    &.jf-input--error {
+      border-color: var(--error-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        border-color: var(--error-default);
+        box-shadow: none;
+      }
+
+      &:focus-within,
+      &:focus-within:hover {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+    }
+
+    // Status: Success
+    &.jf-input--success {
+      border-color: var(--success-default);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        border-color: var(--success-default);
+        box-shadow: none;
+      }
+
+      &:focus-within,
+      &:focus-within:hover {
+        border-color: var(--success-default);
+        box-shadow: 0 0 0 3px rgba(100, 178, 0, 0.3);
+      }
+    }
+
+    // Status: Warning
+    &.jf-input--warning {
+      border-color: var(--yellow-500);
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        border-color: var(--yellow-500);
+        box-shadow: none;
+      }
+
+      &:focus-within,
+      &:focus-within:hover {
+        border-color: var(--yellow-500);
+        box-shadow: 0 0 0 3px rgba(249, 164, 0, 0.3);
+      }
+    }
+
+    // Status: Read Only — same bg, no border
+    &.jf-input--readonly {
+      background: var(--gray-500);
+      border-color: transparent;
+
+      &:hover {
+        border-color: transparent;
+        box-shadow: none;
+      }
+
+      &:focus-within,
+      &:focus-within:hover {
+        border-color: var(--accent-default);
+        box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3);
+      }
+    }
+
+    // State: Disabled
+    &.jf-input--disabled {
+      background: var(--gray-500);
+      border-color: transparent;
+      opacity: 0.4;
+
+      &:hover {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+  }
+}

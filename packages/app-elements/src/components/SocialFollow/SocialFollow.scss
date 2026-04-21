@@ -1,0 +1,43 @@
+// ============================================
+// JotForm Apps - Social Follow Component
+// ============================================
+
+.jf-social {
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+
+  &--horizontal {
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+    padding: var(--space-3);
+  }
+
+  &--shrinked {
+    width: 300px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    &.jf-social--horizontal {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

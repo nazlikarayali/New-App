@@ -1,0 +1,193 @@
+// ============================================
+// JotForm Apps - List Component
+// ============================================
+
+.jf-list {
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-family);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &--basic {
+    gap: 0;
+  }
+
+  &--card {
+    gap: var(--space-2);
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &__card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+
+    &--small {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    &--medium {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    &--large {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &__divider {
+    height: 1px;
+    background: var(--border);
+    width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+// =========================================
+// Basic List Item
+// =========================================
+.jf-list-item--basic {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &.jf-list-item--compact {
+    padding: var(--space-3) 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+// =========================================
+// Image
+// =========================================
+.jf-list-item__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-brand);
+  color: var(--fg-brand);
+  flex-shrink: 0;
+
+  &--square {
+    border-radius: var(--radius-md);
+  }
+
+  &--circle {
+    border-radius: var(--radius-rounded);
+  }
+}
+
+// =========================================
+// Content
+// =========================================
+.jf-list-item__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.jf-list-item__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+// Label/Large/Bold
+.jf-list-item__title {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: var(--line-height-label-lg);
+}
+
+// Paragraph/Small/Regular
+.jf-list-item__desc {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: var(--line-height-paragraph-sm);
+}
+
+// =========================================
+// List Heading
+// =========================================
+.jf-list__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  padding: 0;
+  margin-bottom: var(--space-2);
+}
+
+.jf-list__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-sm);
+  color: var(--fg-primary);
+  letter-spacing: -0.48px;
+  overflow: hidden;
+  max-height: 128px;
+  margin: 0;
+}
+
+.jf-list__subtitle {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  margin: 0;
+
+  &--empty {
+    display: none;
+  }
+}

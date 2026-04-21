@@ -1,0 +1,115 @@
+// ============================================
+// JotForm Apps - ProgressIndicator Component
+// ============================================
+
+.jf-progress-indicator {
+  width: 100%;
+  max-width: 100%;
+  background: var(--bg-fill);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-family: var(--font-family);
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+}
+
+// Header
+.jf-progress-indicator__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.jf-progress-indicator__title {
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-sm);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.jf-progress-indicator__subtitle {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+  margin: 0;
+}
+
+// Segmented progress bar
+.jf-progress-indicator__segments {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.jf-progress-indicator__segment {
+  flex: 1;
+  height: var(--space-2);
+  border-radius: var(--radius-rounded);
+  background: color-mix(in srgb, var(--bg-fill-brand) 15%, var(--bg-fill));
+  transition: background 300ms ease;
+
+  &--completed {
+    background: var(--bg-fill-brand);
+  }
+}
+
+// Steps list
+.jf-progress-indicator__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.jf-progress-indicator__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition);
+  font-family: var(--font-family);
+  text-align: left;
+
+  &:hover {
+    background: var(--bg-surface-hover);
+    box-shadow: 0 1px 3px color-mix(in srgb, var(--fg-primary) 8%, transparent);
+  }
+}
+
+// Form card wrapper inside item
+.jf-progress-indicator__form-card {
+  flex: 1;
+  min-width: 0;
+  pointer-events: none;
+
+  .jf-form {
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+// Check badge (same pattern as jf-form__badge but success color)
+.jf-progress-indicator__check-badge {
+  width: 24px;
+  height: 24px;
+  background: var(--bg-fill-success);
+  border-radius: var(--radius-rounded);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-inverse);
+  padding: var(--space-1);
+}

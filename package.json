@@ -1,0 +1,11 @@
+{
+  "name": "jotform-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @jf/app-builder dev",
+    "dev:elements": "pnpm --filter @jf/app-elements dev",
+    "dev:design": "pnpm --filter @jf/design-system dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  }
+}

@@ -1,0 +1,227 @@
+// ============================================
+// Button Component
+// Source: Figma / Actions — Button
+// ============================================
+
+// ---- Spinner animation ----
+@keyframes jf-spin {
+  to { transform: rotate(360deg); }
+}
+
+.jf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xs);
+  border: 1px solid transparent;
+  font-family: var(--font-family-circular);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+
+  // ---- Sizes ----
+  &--sm {
+    height: 32px;
+    min-width: 80px;
+    padding: 0 var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    letter-spacing: var(--letter-spacing-lg);
+
+    .jf-btn__icon { width: 16px; height: 16px; }
+    .jf-btn__spinner { width: 16px; height: 16px; }
+  }
+
+  &--md {
+    height: 40px;
+    min-width: 96px;
+    padding: 0 var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-xs);
+    letter-spacing: var(--letter-spacing-lg);
+
+    .jf-btn__icon { width: 20px; height: 20px; }
+    .jf-btn__spinner { width: 20px; height: 20px; }
+  }
+
+  &--lg {
+    height: 48px;
+    min-width: 120px;
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-xs);
+    letter-spacing: var(--letter-spacing-sm);
+
+    .jf-btn__icon { width: 24px; height: 24px; }
+    .jf-btn__spinner { width: 24px; height: 24px; }
+  }
+
+  // ---- Shape ----
+  &--rectangle {
+    border-radius: var(--radius-sm);
+  }
+
+  &--rounded {
+    border-radius: var(--radius-rounded);
+  }
+
+  // ---- Icon Only ----
+  &--icon-only {
+    min-width: unset;
+    padding: 0;
+    gap: 0;
+
+    &.jf-btn--sm { width: 32px; }
+    &.jf-btn--md { width: 40px; }
+    &.jf-btn--lg { width: 48px; }
+  }
+
+  // ---- Disabled ----
+  &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // ---- Loading ----
+  &--loading {
+    cursor: wait;
+  }
+
+  // ============================================
+  // Variant: Filled
+  // ============================================
+  &--filled {
+    color: var(--core-white);
+
+    &.jf-btn--primary {
+      background: var(--accent-default);
+      &:hover { background: var(--accent-dark); }
+      &:active { background: var(--accent-dark); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--blue-200); }
+    }
+
+    &.jf-btn--secondary {
+      background: var(--background-light);
+      color: var(--text-dark);
+      &:hover { background: var(--background-medium); }
+      &:active { background: var(--background-medium); }
+      &:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--navy-50) 50%, transparent); }
+    }
+
+    &.jf-btn--constructive {
+      background: var(--success-default);
+      &:hover { background: var(--success-dark); }
+      &:active { background: var(--success-dark); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--green-200); }
+    }
+
+    &.jf-btn--destructive {
+      background: var(--error-default);
+      &:hover { background: var(--error-dark); }
+      &:active { background: var(--error-dark); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--red-200); }
+    }
+  }
+
+  // ============================================
+  // Variant: Ghost
+  // ============================================
+  &--ghost {
+    background: transparent;
+
+    &.jf-btn--primary {
+      color: var(--accent-default);
+      border-color: var(--accent-default);
+      &:hover { background: var(--accent-lightest); }
+      &:active { background: var(--accent-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--blue-200); }
+    }
+
+    &.jf-btn--secondary {
+      color: var(--text-dark);
+      border-color: var(--border-medium);
+      &:hover { background: var(--background-lightest); }
+      &:active { background: var(--background-light); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--navy-100); }
+    }
+
+    &.jf-btn--constructive {
+      color: var(--success-default);
+      border-color: var(--success-default);
+      &:hover { background: var(--success-lightest); }
+      &:active { background: var(--success-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--green-200); }
+    }
+
+    &.jf-btn--destructive {
+      color: var(--error-default);
+      border-color: var(--error-default);
+      &:hover { background: var(--error-lightest); }
+      &:active { background: var(--error-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--red-200); }
+    }
+  }
+
+  // ============================================
+  // Variant: Transparent
+  // ============================================
+  &--transparent {
+    background: transparent;
+    border-color: transparent;
+
+    &.jf-btn--primary {
+      color: var(--accent-default);
+      &:hover { background: var(--accent-lightest); }
+      &:active { background: var(--accent-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--blue-200); }
+    }
+
+    &.jf-btn--secondary {
+      color: var(--text-dark);
+      &:hover { background: var(--background-lightest); }
+      &:active { background: var(--background-light); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--navy-100); }
+    }
+
+    &.jf-btn--constructive {
+      color: var(--success-default);
+      &:hover { background: var(--success-lightest); }
+      &:active { background: var(--success-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--green-200); }
+    }
+
+    &.jf-btn--destructive {
+      color: var(--error-default);
+      &:hover { background: var(--error-lightest); }
+      &:active { background: var(--error-lightest); }
+      &:focus-visible { box-shadow: 0 0 0 3px var(--red-200); }
+    }
+  }
+
+  // ---- Child elements ----
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    // Override Icon component's inline size to match button size
+    .jf-icon {
+      width: inherit !important;
+      height: inherit !important;
+    }
+  }
+
+  &__label {
+    flex-shrink: 0;
+  }
+
+  &__spinner {
+    animation: jf-spin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+}

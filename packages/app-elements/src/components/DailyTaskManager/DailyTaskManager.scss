@@ -1,0 +1,217 @@
+// ============================================
+// JotForm Apps - DailyTaskManager Component
+// ============================================
+
+.jf-daily-tasks {
+  width: 100%;
+  max-width: 100%;
+  background: var(--bg-fill);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-family: var(--font-family);
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+}
+
+.jf-daily-tasks__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.jf-daily-tasks__icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-brand);
+  border-radius: var(--radius-md);
+  color: var(--fg-brand);
+}
+
+.jf-daily-tasks__header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.jf-daily-tasks__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jf-daily-tasks__title {
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label-lg);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.jf-daily-tasks__count {
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-disabled);
+}
+
+.jf-daily-tasks__subtitle {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+  margin: 0;
+}
+
+// Progress bar
+.jf-daily-tasks__progress-track {
+  height: var(--space-2);
+  background: color-mix(in srgb, var(--bg-fill-brand) 15%, var(--bg-fill));
+  border-radius: var(--radius-rounded);
+  overflow: hidden;
+}
+
+.jf-daily-tasks__progress-fill {
+  height: 100%;
+  background: var(--bg-fill-brand);
+  border-radius: var(--radius-rounded);
+  transition: width 300ms ease;
+}
+
+// Task list
+.jf-daily-tasks__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.jf-daily-tasks__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+
+  &:hover {
+    background: color-mix(in srgb, var(--fg-brand) 5%, var(--bg-fill));
+  }
+
+  &.completed .jf-daily-tasks__item-text {
+    text-decoration: line-through;
+    color: var(--fg-disabled);
+  }
+
+  &.completed .jf-daily-tasks__checkbox {
+    background: var(--bg-fill-brand);
+    border-color: var(--bg-fill-brand);
+    color: var(--fg-inverse);
+  }
+}
+
+.jf-daily-tasks__checkbox {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--bg-fill-brand);
+  }
+}
+
+.jf-daily-tasks__item-text {
+  flex: 1;
+  font-size: var(--font-size-paragraph-md);
+  line-height: var(--line-height-paragraph-md);
+  color: var(--fg-primary);
+  transition: color var(--transition);
+}
+
+.jf-daily-tasks__remove {
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.jf-daily-tasks__item:hover .jf-daily-tasks__remove {
+  opacity: 1;
+}
+
+// Add task input
+.jf-daily-tasks__add {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.jf-daily-tasks__input {
+  flex: 1;
+  height: 40px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--fg-primary);
+  font-size: var(--font-size-label-lg);
+  line-height: var(--line-height-label-lg);
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+
+  &::placeholder {
+    color: var(--fg-disabled);
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--bg-fill-brand) 40%, var(--border));
+  }
+
+  &:focus {
+    border-color: var(--bg-fill-brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--bg-fill-brand) 20%, transparent);
+  }
+}
+
+.jf-daily-tasks__add-btn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-fill-brand);
+  color: var(--fg-inverse);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition);
+
+  &:hover {
+    background: var(--bg-fill-brand-hover);
+  }
+
+  &:disabled {
+    background: color-mix(in srgb, var(--bg-fill-brand) 30%, var(--bg-fill));
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,47 @@
+// ============================================
+// Reset & Base Styles
+// ============================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-circular);
+  background: var(--background-white);
+  color: var(--text-darkest);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-default);
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-family-circular);
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, textarea, select {
+  font-family: var(--font-family-circular);
+}

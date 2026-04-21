@@ -1,0 +1,133 @@
+// ============================================
+// JotForm Apps - Table Component
+// ============================================
+
+.jf-table {
+  background: var(--bg-fill);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family);
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-3);
+  gap: var(--space-4);
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+
+  &--horizontal {
+    display: flex;
+    align-items: center;
+  }
+
+  &--right {
+    flex-direction: row-reverse;
+
+    .jf-table__content {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+
+  &--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+
+    .jf-table__content {
+      align-items: center;
+      text-align: center;
+      padding: 0 var(--space-3);
+    }
+  }
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &--shrinked {
+    width: 300px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+
+.jf-table__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-brand);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  color: var(--fg-brand);
+}
+
+.jf-table__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+  padding-right: var(--space-3);
+}
+
+.jf-table__title {
+  color: var(--fg-primary);
+  font-weight: var(--font-weight-bold);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+
+  &--normal {
+    font-size: var(--font-size-label-lg);
+    line-height: var(--line-height-label-lg);
+    max-height: var(--line-height-label-lg);
+  }
+
+  &--large {
+    font-size: var(--font-size-label-lg);
+    line-height: var(--line-height-label-lg);
+    max-height: var(--line-height-label-lg);
+  }
+}
+
+.jf-table__desc {
+  color: var(--fg-secondary);
+  font-weight: var(--font-weight-regular);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+
+  &--normal {
+    font-size: var(--font-size-paragraph-sm);
+    line-height: var(--line-height-paragraph-sm);
+    max-height: var(--line-height-paragraph-sm);
+  }
+
+  &--large {
+    font-size: var(--font-size-label-md);
+    line-height: var(--line-height-label-md);
+    max-height: var(--line-height-label-md);
+  }
+}
+
+.jf-table__badge {
+  width: 24px;
+  height: 24px;
+  background: var(--bg-fill-brand);
+  border-radius: var(--radius-rounded);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-inverse);
+  padding: var(--space-1);
+}

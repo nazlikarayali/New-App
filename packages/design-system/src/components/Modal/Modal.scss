@@ -1,0 +1,227 @@
+// ============================================
+// Modal Component
+// Source: Figma / Modal / Product (Header + Body + Footer)
+// ============================================
+
+.jf-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: color-mix(in srgb, var(--gray-900) 60%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  animation: jf-modal-fade-in 0.15s ease;
+}
+
+.jf-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - var(--spacing-xl) * 2);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  font-family: var(--font-family-circular);
+  overflow: hidden;
+  animation: jf-modal-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &--sm {
+    max-width: 480px;
+  }
+
+  &--md {
+    max-width: 640px;
+  }
+
+  &--lg {
+    max-width: 768px;
+  }
+}
+
+// ===== Header =====
+.jf-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.jf-modal__header-main {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.jf-modal__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-default);
+  border-radius: var(--radius-sm);
+  color: var(--background-white);
+}
+
+.jf-modal__heading {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.jf-modal__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 24px;
+  letter-spacing: -0.014em;
+  color: var(--text-darkest);
+}
+
+.jf-modal__description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-sm);
+  color: var(--text-medium);
+}
+
+// ===== Body =====
+.jf-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: var(--spacing-2xl);
+  overflow-y: auto;
+  color: var(--text-darkest);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+}
+
+// ===== Footer =====
+.jf-modal__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-top: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.jf-modal__footer-description {
+  flex: 1 1 0;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-medium);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+
+  &:empty {
+    flex: 1 1 0;
+  }
+}
+
+.jf-modal__footer-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+// ===== Mobile: stacked footer =====
+@media (max-width: 640px) {
+  .jf-modal__overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .jf-modal {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100vh;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    animation: jf-modal-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .jf-modal__header,
+  .jf-modal__body,
+  .jf-modal__footer {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .jf-modal__footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .jf-modal__footer-description {
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .jf-modal__footer-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+
+    > .jf-btn {
+      width: 100%;
+    }
+  }
+}
+
+// ===== Animations =====
+@keyframes jf-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes jf-modal-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes jf-modal-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+// ============================================
+// Dark mode
+// ============================================
+[data-theme='dark'] {
+  .jf-modal {
+    background: var(--gray-500);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .jf-modal__header,
+  .jf-modal__footer {
+    border-color: var(--gray-400);
+  }
+
+  .jf-modal__title {
+    color: var(--secondary-text-white);
+  }
+
+  .jf-modal__description {
+    color: var(--secondary-text-light);
+  }
+
+  .jf-modal__body {
+    color: var(--secondary-text-white);
+  }
+
+  .jf-modal__footer-description {
+    color: var(--secondary-text-light);
+  }
+}

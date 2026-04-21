@@ -1,0 +1,193 @@
+// ============================================
+// FormField — Shared wrapper for labeled inputs
+// Source: Figma / Input — Light Input Field With Label (node 1438:19530)
+// ============================================
+
+.jf-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  width: 100%;
+
+  // ============================================
+  // Label (Title + Description)
+  // ============================================
+  &__label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xs);
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &__title-text {
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-darkest);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__required {
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-bold);
+    color: var(--error-default);
+  }
+
+  &__description {
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-medium);
+    width: 100%;
+    margin: 0;
+  }
+
+  // ============================================
+  // Input slot
+  // ============================================
+  &__input {
+    width: 100%;
+  }
+
+  // ============================================
+  // Help Text
+  // ============================================
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xs);
+    width: 100%;
+  }
+
+  &__help-text {
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    white-space: nowrap;
+  }
+
+  // Help — Default
+  &__help--default {
+    color: var(--navy-300);
+  }
+
+  // Help — Success
+  &__help--success {
+    color: var(--success-default);
+  }
+
+  // Help — Warning
+  &__help--warning {
+    color: var(--yellow-500);
+  }
+
+  // Help — Error (red pill badge)
+  &__help--error {
+    background: var(--error-default);
+    padding: var(--spacing-2xs);
+    border-radius: var(--radius-sm);
+    color: var(--core-white);
+    width: auto;
+  }
+
+  // Help — Disabled
+  &__help--disabled {
+    color: var(--navy-200);
+  }
+
+  // ============================================
+  // Size: Large (lg)
+  // Figma: Title 16px/24px Bold, Description 14px/20px Book
+  // ============================================
+  &--lg {
+    .jf-form-field__title-text,
+    .jf-form-field__required {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-form-field__description {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+  }
+
+  // ============================================
+  // Size: Default (md)
+  // Figma: Title 14px/20px Bold, Description 12px/16px Book
+  // ============================================
+  &--md {
+    .jf-form-field__title-text,
+    .jf-form-field__required {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-form-field__description {
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-xs);
+    }
+  }
+
+  // ============================================
+  // State: Disabled
+  // Figma: Title & Description navy-200, Help navy-200
+  // ============================================
+  &--disabled {
+    .jf-form-field__title-text {
+      color: var(--navy-200);
+    }
+
+    .jf-form-field__description {
+      color: var(--navy-200);
+    }
+  }
+
+  // ============================================
+  // Dark theme
+  // ============================================
+  [data-theme='dark'] & {
+    .jf-form-field__title-text {
+      color: var(--core-white);
+    }
+
+    .jf-form-field__required {
+      color: var(--error-default);
+    }
+
+    .jf-form-field__description {
+      color: var(--gray-200);
+    }
+
+    .jf-form-field__help--default {
+      color: var(--gray-300);
+    }
+
+    .jf-form-field__help--disabled {
+      color: var(--gray-200);
+    }
+
+    &.jf-form-field--disabled {
+      .jf-form-field__title-text {
+        color: var(--gray-200);
+      }
+
+      .jf-form-field__description {
+        color: var(--gray-200);
+      }
+    }
+  }
+}

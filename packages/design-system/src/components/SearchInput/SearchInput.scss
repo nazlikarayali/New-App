@@ -1,0 +1,313 @@
+// ============================================
+// Search Input Component
+// Source: Figma / Input — Search
+// Token mappings verified per Figma node
+// ============================================
+
+.jf-search {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+
+  // ============================================
+  // Search field (left part)
+  // ============================================
+  &__field {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    background: var(--background-white);
+    border: 1px solid var(--border-medium); // #C8CEED
+    border-radius: var(--radius-sm); // 4px
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  // State: Hover — border navy-300, shadow Input White
+  &__field:hover {
+    border-color: var(--navy-300); // #6C73A8
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  // State: Focus — border accent-default, ring blue-200 50%
+  &__field:focus-within {
+    border-color: var(--accent-default); // #0075E3
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5); // #77CFFF 50%
+    z-index: 1;
+  }
+
+  &__field:focus-within:hover {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Search icon — navy-200
+  // ============================================
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--navy-200); // #979DC6
+
+  }
+
+  // ============================================
+  // Input — Body / Body Small font
+  // ============================================
+  &__input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-darkest); // #0A1551
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book); // 400
+    outline: none;
+
+    &::placeholder {
+      color: var(--navy-200); // #979DC6
+    }
+  }
+
+  // ============================================
+  // Clear button (xmark) — shown when filled
+  // ============================================
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--navy-200);
+    cursor: pointer;
+    transition: color 0.15s ease;
+
+
+    &:hover { color: var(--text-darkest); }
+  }
+
+  // ============================================
+  // Filter button (right part) — separate element
+  // Border: top + right + bottom only (no left)
+  // ============================================
+  &__filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--background-white);
+    border: 1px solid var(--border-medium); // #C8CEED
+    border-left: none;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0; // right corners only
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--text-dark); // #343C6A
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--background-lightest);
+    }
+  }
+
+  &__filter-text {
+    line-height: var(--line-height-xs); // 16px
+  }
+
+  &__filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark); // #343C6A
+
+  }
+
+  // ============================================
+  // With filter: search field gets left-only radius
+  // ============================================
+  &--with-filter &__field {
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  }
+
+  // ============================================
+  // Size: Large (48px)
+  // Font: Body/Default — 16px/24px, ls: -0.176px
+  // ============================================
+  &--lg {
+    .jf-search__field {
+      height: 48px;
+      padding: 0 var(--spacing-md);
+      gap: var(--spacing-sm);
+    }
+    .jf-search__icon { width: 24px; height: 24px; }
+    .jf-search__input {
+      font-size: var(--font-size-md); // 16px
+      line-height: var(--line-height-md); // 24px
+      letter-spacing: -0.176px;
+    }
+    .jf-search__clear { width: 24px; height: 24px; }
+    .jf-search__filter-btn {
+      min-width: 120px;
+      padding: 0 var(--spacing-sm);
+      font-size: var(--font-size-lg);
+      letter-spacing: -0.198px;
+      gap: 0;
+    }
+    .jf-search__filter-icon { width: 24px; height: 24px; }
+    .jf-search__filter-text { padding: 0 var(--spacing-sm); }
+  }
+
+  // ============================================
+  // Size: Default/Medium (40px)
+  // Font: Body Small/Default — 14px/20px, ls: -0.084px
+  // ============================================
+  &--md {
+    .jf-search__field {
+      height: 40px;
+      padding: 0 var(--spacing-sm);
+      gap: var(--spacing-sm);
+    }
+    .jf-search__icon { width: 20px; height: 20px; }
+    .jf-search__input {
+      font-size: var(--font-size-sm); // 14px
+      line-height: var(--line-height-sm); // 20px
+      letter-spacing: -0.084px;
+    }
+    .jf-search__clear { width: 20px; height: 20px; }
+    .jf-search__filter-btn {
+      min-width: 96px;
+      padding: 0 var(--spacing-sm);
+      font-size: var(--font-size-sm); // 14px
+      letter-spacing: -0.084px;
+      gap: 0;
+    }
+    .jf-search__filter-icon { width: 20px; height: 20px; }
+    .jf-search__filter-text { padding: 0 var(--spacing-xs); }
+  }
+
+  // ============================================
+  // Size: Small (32px)
+  // Font: Body Small/Default — 14px/20px, ls: -0.084px
+  // ============================================
+  &--sm {
+    .jf-search__field {
+      height: 32px;
+      padding: 0 var(--spacing-xs);
+      gap: var(--spacing-xs);
+    }
+    .jf-search__icon { width: 16px; height: 16px; }
+    .jf-search__input {
+      font-size: var(--font-size-sm); // 14px
+      line-height: var(--line-height-sm); // 20px
+      letter-spacing: -0.084px;
+    }
+    .jf-search__clear { width: 16px; height: 16px; }
+    .jf-search__filter-btn {
+      min-width: 80px;
+      padding: 0 var(--spacing-xs);
+      font-size: var(--font-size-xs); // 12px
+      letter-spacing: -0.072px;
+      gap: 0;
+    }
+    .jf-search__filter-icon { width: 16px; height: 16px; }
+    .jf-search__filter-text { padding: 0 var(--spacing-2xs); }
+  }
+
+  // ============================================
+  // State: Disabled
+  // BG: navy-50, opacity: 0.4, no border
+  // ============================================
+  &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+
+    .jf-search__field {
+      background: var(--navy-50); // #E3E5F5
+      border-color: transparent;
+    }
+
+    .jf-search__field:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  // ============================================
+  // Dark theme overrides
+  // Figma: Dark Search Input node 1725:29803
+  // ============================================
+  [data-theme='dark'] & {
+    // Default: bg gray-500, NO border
+    .jf-search__field {
+      background: var(--gray-500); // #434A60
+      border-color: transparent;
+    }
+
+    // Hover: border gray-300, shadow Input Dark
+    .jf-search__field:hover {
+      border-color: var(--gray-300); // #7F859C
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    // Focus: border accent-default, ring accent-default 30%
+    .jf-search__field:focus-within {
+      border-color: var(--accent-default); // #0075E3
+      box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3); // #0075E3 30%
+    }
+
+    .jf-search__field:focus-within:hover {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(0, 117, 227, 0.3);
+    }
+
+    // Text: white, placeholder gray-200
+    .jf-search__input {
+      color: var(--core-white); // #FFFFFF
+
+      &::placeholder {
+        color: var(--gray-200); // #A0A6B6
+      }
+    }
+
+    // Icons: gray-200
+    .jf-search__icon,
+    .jf-search__clear {
+      color: var(--gray-200); // #A0A6B6
+    }
+
+    .jf-search__clear:hover {
+      color: var(--core-white);
+    }
+
+    // Filter button: bg gray-500, no visible border
+    .jf-search__filter-btn {
+      background: var(--gray-500); // #434A60
+      border-color: transparent;
+      color: var(--gray-200); // #A0A6B6
+    }
+
+    .jf-search__filter-btn:hover {
+      background: var(--gray-400); // #4C536F
+    }
+
+    .jf-search__filter-icon {
+      color: var(--gray-200); // #A0A6B6
+    }
+
+    // Disabled: bg gray-400, opacity 40%
+    &.jf-search--disabled .jf-search__field {
+      background: var(--gray-400); // #4C536F
+      border-color: transparent;
+    }
+
+    &.jf-search--disabled .jf-search__field:hover {
+      box-shadow: none;
+    }
+  }
+}

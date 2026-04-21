@@ -1,0 +1,77 @@
+// ============================================
+// JotForm Apps - Spacer Component
+// ============================================
+
+.jf-spacer {
+  width: 100%;
+  height: var(--spacer-height, 48px);
+  position: relative;
+  border-radius: var(--radius-lg);
+
+  &--selected {
+    border: 1px dashed var(--border-info);
+  }
+
+  &--dragging {
+    background: var(--bg-surface-brand);
+    border-color: transparent;
+  }
+
+  &--shrinked {
+    width: 300px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+
+// Handle: hidden on desktop (body is drag surface), visible on mobile
+.jf-spacer__handle {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 20px;
+  cursor: ns-resize;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  touch-action: none;
+
+  &::after {
+    content: '';
+    width: 32px;
+    height: 3px;
+    border-radius: var(--radius-rounded);
+    background: var(--border-info);
+  }
+
+}
+
+// Height label — hidden by default, shown during resize drag and d&d overlay
+.jf-spacer__label {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  font-size: var(--ds-font-size-sm, 14px);
+  font-weight: var(--ds-font-weight-medium, 500);
+  font-family: var(--ds-font-family, var(--font-family));
+  color: var(--tooltip-fg, #fff);
+  background: var(--btn-primary-bg, #000);
+  height: 24px;
+  display: none;
+  align-items: center;
+  padding: 0 var(--ds-space-sm, 8px);
+  border-radius: var(--radius-rounded);
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+
+  &--visible {
+    display: flex;
+  }
+}

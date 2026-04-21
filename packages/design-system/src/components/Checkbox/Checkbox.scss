@@ -1,0 +1,385 @@
+// ============================================
+// Checkbox Component
+// Source: Figma / Actions — Checkbox (node 567:704)
+// ============================================
+
+.jf-checkbox {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  width: 100%;
+
+  // ============================================
+  // Hidden native input
+  // ============================================
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  // ============================================
+  // Control wrapper
+  // ============================================
+  &__control-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  // ============================================
+  // Checkbox box (outer)
+  // ============================================
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--background-white);
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    color: var(--core-white);
+  }
+
+  // ============================================
+  // Check & indeterminate icons (hidden by default)
+  // ============================================
+  &__check,
+  &__indeterminate {
+    display: none;
+  }
+
+  // Selected: show checkmark
+  &__input:checked ~ &__control {
+    background: var(--accent-default);
+    border-color: var(--accent-default);
+  }
+
+  &__input:checked ~ &__control &__check {
+    display: block;
+  }
+
+  // Indeterminate: show dash
+  &__input:indeterminate ~ &__control {
+    background: var(--accent-default);
+    border-color: var(--accent-default);
+  }
+
+  &__input:indeterminate ~ &__control &__indeterminate {
+    display: block;
+  }
+
+  &__input:indeterminate ~ &__control &__check {
+    display: none;
+  }
+
+  // Hover
+  &:hover &__control {
+    border-color: var(--accent-default);
+  }
+
+  &:hover &__input:checked ~ &__control,
+  &:hover &__input:indeterminate ~ &__control {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+
+  // Focus
+  &__input:focus-visible ~ &__control {
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  &__input:checked:focus-visible ~ &__control,
+  &__input:indeterminate:focus-visible ~ &__control {
+    background: var(--accent-default);
+    border-color: var(--accent-default);
+    box-shadow: 0 0 0 3px rgba(119, 207, 255, 0.5);
+  }
+
+  // ============================================
+  // Label wrapper
+  // ============================================
+  &__label-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0 var(--spacing-2xs);
+  }
+
+  // ============================================
+  // Label text
+  // ============================================
+  &__label {
+    width: 100%;
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-darkest);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  // ============================================
+  // Description text
+  // ============================================
+  &__description {
+    width: 100%;
+    font-family: var(--font-family-circular);
+    font-weight: var(--font-weight-book);
+    color: var(--text-medium);
+  }
+
+  // Has description: title becomes bold
+  &--has-description &__label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  // ============================================
+  // Info icon
+  // ============================================
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--navy-300);
+  }
+
+  // ============================================
+  // Size: Small (sm) — 16px box, 1.5px border
+  // ============================================
+  &--sm {
+    gap: var(--spacing-2xs);
+
+    .jf-checkbox__control-wrapper {
+      height: 24px;
+      width: 16px;
+    }
+
+    .jf-checkbox__control {
+      width: 16px;
+      height: 16px;
+      border-width: 1.5px;
+    }
+
+    .jf-checkbox__check,
+    .jf-checkbox__indeterminate {
+      width: 10px;
+      height: 10px;
+    }
+
+    .jf-checkbox__label {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-checkbox__description {
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-xs);
+    }
+
+    .jf-checkbox__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Size: Default (md) — 20px box, 2px border
+  // ============================================
+  &--md {
+    gap: var(--spacing-xs);
+
+    .jf-checkbox__control-wrapper {
+      height: 24px;
+      width: 20px;
+    }
+
+    .jf-checkbox__control {
+      width: 20px;
+      height: 20px;
+    }
+
+    .jf-checkbox__check,
+    .jf-checkbox__indeterminate {
+      width: 12px;
+      height: 12px;
+    }
+
+    .jf-checkbox__label {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-checkbox__description {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-checkbox__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Size: Large (lg) — 24px box, 2px border
+  // ============================================
+  &--lg {
+    gap: var(--spacing-xs);
+
+    .jf-checkbox__control-wrapper {
+      height: 24px;
+      width: 24px;
+    }
+
+    .jf-checkbox__control {
+      width: 24px;
+      height: 24px;
+    }
+
+    .jf-checkbox__check,
+    .jf-checkbox__indeterminate {
+      width: 14px;
+      height: 14px;
+    }
+
+    .jf-checkbox__label {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);
+      letter-spacing: -0.176px;
+    }
+
+    .jf-checkbox__description {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-sm);
+      letter-spacing: -0.084px;
+    }
+
+    .jf-checkbox__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ============================================
+  // Error
+  // ============================================
+  &--error {
+    .jf-checkbox__control {
+      border-color: var(--error-default);
+    }
+
+    &:hover .jf-checkbox__control {
+      border-color: var(--error-dark);
+    }
+
+    .jf-checkbox__input:focus-visible ~ .jf-checkbox__control {
+      border-color: var(--error-default);
+      box-shadow: 0 0 0 3px rgba(254, 202, 202, 0.5);
+    }
+  }
+
+  // ============================================
+  // Disabled
+  // Figma: box border navy-50 + opacity 0.4, label_wrapper opacity 0.4
+  // ============================================
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+
+    .jf-checkbox__control {
+      border-color: var(--navy-50);
+      opacity: 0.4;
+    }
+
+    .jf-checkbox__input:checked ~ .jf-checkbox__control,
+    .jf-checkbox__input:indeterminate ~ .jf-checkbox__control {
+      opacity: 0.4;
+    }
+
+    .jf-checkbox__label-wrapper {
+      opacity: 0.4;
+    }
+  }
+
+  // ============================================
+  // Dark theme
+  // Figma: bg gray-700, border gray-400
+  // ============================================
+  [data-theme='dark'] & {
+    .jf-checkbox__control {
+      background: var(--gray-700);
+      border-color: var(--gray-400);
+    }
+
+    .jf-checkbox__input:checked ~ .jf-checkbox__control,
+    .jf-checkbox__input:indeterminate ~ .jf-checkbox__control {
+      background: var(--accent-default);
+      border-color: var(--accent-default);
+    }
+
+    &:hover .jf-checkbox__control {
+      border-color: var(--accent-default);
+    }
+
+    &:hover .jf-checkbox__input:checked ~ .jf-checkbox__control,
+    &:hover .jf-checkbox__input:indeterminate ~ .jf-checkbox__control {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    // Figma: focus ring = accent-dark (#0066C3) at 50%
+    .jf-checkbox__input:focus-visible ~ .jf-checkbox__control {
+      border-color: var(--accent-default);
+      box-shadow: 0 0 0 3px rgba(0, 102, 195, 0.5);
+    }
+
+    .jf-checkbox__label {
+      color: var(--core-white);
+    }
+
+    .jf-checkbox__description {
+      color: var(--gray-200);
+    }
+
+    .jf-checkbox__icon {
+      color: var(--gray-200);
+    }
+
+    &.jf-checkbox--error {
+      .jf-checkbox__control {
+        border-color: var(--error-default);
+      }
+
+      &:hover .jf-checkbox__control {
+        border-color: var(--error-dark);
+      }
+
+      .jf-checkbox__input:focus-visible ~ .jf-checkbox__control {
+        border-color: var(--error-default);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+      }
+    }
+
+    &.jf-checkbox--disabled {
+      .jf-checkbox__label-wrapper {
+        opacity: 0.4;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+// ============================================
+// JotForm Apps - Image Gallery Component
+// ============================================
+
+.jf-gallery {
+  background: var(--bg-fill);
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-1);
+  display: grid;
+  gap: var(--space-3);
+  aspect-ratio: 1 / 1;
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+
+  &--shrinked {
+    width: 300px;
+  }
+}
+
+.jf-gallery__cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--bg-fill-hover);
+}
+
+.jf-gallery__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}

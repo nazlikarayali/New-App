@@ -1,0 +1,96 @@
+// ============================================
+// Indicator — notification count or dot
+// Source: Figma / Indicator
+// ============================================
+
+.jf-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-rounded);
+  font-family: var(--font-family-circular);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-xs);
+  overflow: hidden;
+
+  &__count {
+    padding: 0 2px;
+    white-space: nowrap;
+  }
+
+  &__dot {
+    display: block;
+    border-radius: var(--radius-rounded);
+  }
+
+  // ===== Sizes =====
+  &--sm {
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    font-size: var(--font-size-xs);
+    line-height: 16px;
+
+    .jf-indicator__dot { width: 8px; height: 8px; }
+  }
+
+  &--md {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: var(--font-size-xs);
+
+    .jf-indicator__dot { width: 10px; height: 10px; }
+  }
+
+  &--lg {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    font-size: var(--font-size-sm);
+
+    .jf-indicator__dot { width: 12px; height: 12px; }
+  }
+
+  // ===== Style: Color (solid bg + white text) =====
+  &--color {
+    color: var(--core-white);
+
+    &.jf-indicator--information { background: var(--accent-default); }
+    &.jf-indicator--success { background: var(--success-default); }
+    &.jf-indicator--error { background: var(--error-default); }
+    &.jf-indicator--neutral { background: var(--text-medium); }
+  }
+
+  // ===== Style: Light (white bg + status text) =====
+  &--light {
+    background: var(--background-white);
+
+    &.jf-indicator--information { color: var(--accent-default); }
+    &.jf-indicator--success { color: var(--success-default); }
+    &.jf-indicator--error { color: var(--error-default); }
+    &.jf-indicator--neutral { color: var(--text-medium); }
+  }
+
+  // ===== Style: Dot (container transparent, inner colored dot) =====
+  &--dot {
+    background: transparent;
+    padding: 0;
+
+    &.jf-indicator--information .jf-indicator__dot { background: var(--accent-default); }
+    &.jf-indicator--success .jf-indicator__dot { background: var(--success-default); }
+    &.jf-indicator--error .jf-indicator__dot { background: var(--error-default); }
+    &.jf-indicator--neutral .jf-indicator__dot { background: var(--text-medium); }
+  }
+}
+
+// ============================================
+// Dark mode
+// ============================================
+[data-theme='dark'] {
+  .jf-indicator--light {
+    background: var(--gray-500);
+
+    &.jf-indicator--neutral { color: var(--secondary-text-light); }
+  }
+}
