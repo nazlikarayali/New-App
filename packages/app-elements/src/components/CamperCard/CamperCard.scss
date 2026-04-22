@@ -1,0 +1,178 @@
+// ============================================
+// JotForm Apps - CamperCard Component
+// ============================================
+
+.jf-camper-card {
+  width: 100%;
+  background: var(--bg-fill);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-family: var(--font-family);
+
+  &--selected {
+    outline: 2px solid var(--border-info);
+    outline-offset: 4px;
+  }
+}
+
+// ---- Header ----
+.jf-camper-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.jf-camper-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-fill-brand) 10%, var(--bg-fill));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.jf-camper-card__header-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.jf-camper-card__name {
+  font-size: var(--font-size-paragraph-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-paragraph-md);
+  color: var(--fg-primary);
+}
+
+.jf-camper-card__meta {
+  font-size: var(--font-size-paragraph-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-paragraph-sm);
+  color: var(--fg-secondary);
+}
+
+.jf-camper-card__percent-badge {
+  padding: var(--space-1) var(--space-2);
+  background: color-mix(in srgb, var(--bg-fill-warning) 15%, var(--bg-fill));
+  color: var(--bg-fill-warning);
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border-radius: var(--radius-rounded);
+  flex-shrink: 0;
+}
+
+// ---- Progress ----
+.jf-camper-card__progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.jf-camper-card__progress-label {
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-primary);
+}
+
+.jf-camper-card__progress-track {
+  width: 100%;
+  height: var(--space-2);
+  background: color-mix(in srgb, var(--bg-fill-brand) 15%, var(--bg-fill));
+  border-radius: var(--radius-rounded);
+  overflow: hidden;
+}
+
+.jf-camper-card__progress-fill {
+  height: 100%;
+  background: var(--bg-fill-brand);
+  border-radius: var(--radius-rounded);
+  transition: width 300ms ease;
+}
+
+.jf-camper-card__progress-count {
+  font-size: var(--font-size-paragraph-sm);
+  color: var(--fg-secondary);
+}
+
+// ---- Forms list ----
+.jf-camper-card__forms {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.jf-camper-card__form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-height: 56px;
+}
+
+.jf-camper-card__form-label {
+  font-size: var(--font-size-paragraph-sm);
+  color: var(--fg-primary);
+  flex: 1;
+  min-width: 0;
+}
+
+.jf-camper-card__form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.jf-camper-card__status {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border-radius: var(--radius-rounded);
+
+  &--completed {
+    background: color-mix(in srgb, var(--bg-fill-success) 15%, var(--bg-fill));
+    color: var(--bg-fill-success);
+  }
+
+  &--pending {
+    background: color-mix(in srgb, var(--bg-fill-warning) 15%, var(--bg-fill));
+    color: var(--bg-fill-warning);
+  }
+}
+
+.jf-camper-card__open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 40px;
+  padding: 0 var(--space-3);
+  background: var(--bg-fill-brand);
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--fg-inverse);
+  font-family: var(--font-family);
+  font-size: var(--font-size-label-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background var(--transition);
+
+  &:hover {
+    background: color-mix(in srgb, var(--bg-fill-brand), #000 10%);
+  }
+}

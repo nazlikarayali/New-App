@@ -18,6 +18,7 @@ import phoneHomeIndicator from '@jf/design-system/src/assets/phone-home-indicato
 import { PhoneStatusBar } from '../components/PhoneStatusBar'
 import { PageNavigationBar, getPageIconName } from '../components/PageNavigationBar'
 import { MobileBottomBar } from '../components/MobileBottomBar'
+import podoAvatar from '../assets/podo-chat-avatar.png'
 import {
   draggable,
   dropTargetForElements,
@@ -97,7 +98,144 @@ const WIDGETS_GROUPS: PanelGroup[] = [
   { elementIds: ['chart', 'daily-task-manager', 'login-signup', 'progress-indicator'] },
 ]
 
-const HIDDEN_ELEMENTS = ['empty-state', 'app-header', 'bottom-navigation', 'color-picker']
+interface MockWidget {
+  id: string
+  name: string
+  bg: string
+  render: () => React.ReactNode
+}
+
+const MOCK_WIDGETS: MockWidget[] = [
+  {
+    id: 'data-grid',
+    name: 'Data Grid',
+    bg: 'linear-gradient(135deg, #F4A7B9, #E8828B)',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="8" height="8" rx="1.5" fill="#B85A63" />
+        <rect x="14" y="4" width="10" height="8" rx="1.5" fill="#FFD2B5" />
+        <rect x="4" y="14" width="10" height="10" rx="1.5" fill="#FFD2B5" />
+        <rect x="16" y="14" width="8" height="10" rx="1.5" fill="#B85A63" />
+      </svg>
+    ),
+  },
+  {
+    id: 'pdf-embedder',
+    name: 'PDF Embedder',
+    bg: '#FFF1F0',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M6 5h10l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="#FFE4E1" stroke="#D94F3F" strokeWidth="1.2"/>
+        <path d="M16 5v5h5" fill="#D94F3F" opacity=".25"/>
+        <text x="14" y="20" textAnchor="middle" fontSize="7" fontWeight="700" fill="#D94F3F">PDF</text>
+      </svg>
+    ),
+  },
+  {
+    id: 'fit-text',
+    name: 'Fit Text',
+    bg: 'linear-gradient(135deg, #FFE07A, #3AC6C6)',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <text x="14" y="20" textAnchor="middle" fontSize="14" fontWeight="800" fill="#222">FT</text>
+      </svg>
+    ),
+  },
+  {
+    id: 'iframe-embed',
+    name: 'Iframe Embed',
+    bg: '#2B3544',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <text x="14" y="19" textAnchor="middle" fontFamily="monospace" fontSize="11" fontWeight="700" fill="#E85A4F">{'</>'}</text>
+      </svg>
+    ),
+  },
+  {
+    id: 'facebook-follow',
+    name: 'Facebook Follow Box\n(Formerly Like Box)',
+    bg: '#E7F0FB',
+    render: () => (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+        <path d="M2 12v6a2 2 0 0 0 2 2h3v-8H3v-2l2-.5V8a3 3 0 0 1 3-3h2v3H9c-.6 0-1 .4-1 1v1h3l-.5 2H8v8h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" opacity=".15"/>
+        <path d="M13 9V7.5c0-1.4.8-2.5 2.2-2.5h1.8v2.5h-1.4c-.4 0-.6.2-.6.6V9h2l-.3 2.5H15V20h-2.5v-8.5H10V9h3z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    bg: 'linear-gradient(135deg, #F58529, #DD2A7B 50%, #8134AF)',
+    render: () => (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'show-map',
+    name: 'Show Map Location',
+    bg: 'linear-gradient(135deg, #B9D5EC, #6CA0C6)',
+    render: () => (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <path d="M13 4C9 4 6 7 6 11c0 4.5 7 11 7 11s7-6.5 7-11c0-4-3-7-7-7z" fill="#1E6FB8" opacity=".65"/>
+        <circle cx="13" cy="11" r="3" fill="#fff"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'qr-code',
+    name: 'QR Code',
+    bg: '#FFFFFF',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="#111" aria-hidden="true">
+        <rect x="3" y="3" width="8" height="8"/><rect x="5" y="5" width="4" height="4" fill="#fff"/>
+        <rect x="17" y="3" width="8" height="8"/><rect x="19" y="5" width="4" height="4" fill="#fff"/>
+        <rect x="3" y="17" width="8" height="8"/><rect x="5" y="19" width="4" height="4" fill="#fff"/>
+        <rect x="14" y="14" width="3" height="3"/><rect x="19" y="14" width="3" height="3"/>
+        <rect x="14" y="19" width="3" height="3"/><rect x="22" y="22" width="3" height="3"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'animated-heading',
+    name: 'Animated Heading',
+    bg: '#FFF4F1',
+    render: () => (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#E8536E" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <path d="M4 18c2-6 6-6 8 0s6 6 8 0M14 10c1-2 2-2 3 0"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'whatsapp',
+    name: 'WhatsApp Button',
+    bg: '#E7F6EC',
+    render: () => (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.3-.5.1-1.1.1-3.5-.8-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.2.5-.3.7-.3h.5c.2 0 .5-.1.7.5.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.1.2-.1.3-.3.4l-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.7 1.1 2 1.2.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l2 1c.3.1.4.2.5.4 0 .1 0 .7-.1 1.3z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'soundcloud',
+    name: 'SoundCloud',
+    bg: '#FFF1E6',
+    render: () => (
+      <svg width="28" height="22" viewBox="0 0 28 22" fill="#FF7700" aria-hidden="true">
+        <rect x="1" y="10" width="2" height="8" rx="1"/>
+        <rect x="4" y="7" width="2" height="11" rx="1"/>
+        <rect x="7" y="4" width="2" height="14" rx="1"/>
+        <rect x="10" y="2" width="2" height="16" rx="1"/>
+        <path d="M13 2h10a4 4 0 0 1 0 16H13V2z" fill="#FF7700"/>
+      </svg>
+    ),
+  },
+]
+
+const HIDDEN_ELEMENTS = ['empty-state', 'app-header', 'bottom-navigation', 'color-picker', 'camper-card']
 
 function createCanvasElement(comp: RegisteredComponent, id: string): CanvasElement {
   const variants: VariantValues = {}
@@ -230,6 +368,8 @@ const SortableElement = memo(function SortableElement({
   partnerSwapEdge,
   onSelect,
   onPropertyChange,
+  onOpenProperties,
+  onRemove,
 }: {
   element: CanvasElement
   pageId: string
@@ -240,6 +380,8 @@ const SortableElement = memo(function SortableElement({
   partnerSwapEdge: Edge | null
   onSelect: (id: string) => void
   onPropertyChange: (elementId: string, property: string, value: string | boolean | number) => void
+  onOpenProperties: (id: string) => void
+  onRemove: (id: string) => void
 }) {
   const comp = ComponentRegistry.get(element.componentId)
   const isShrinked = element.properties['Shrinked'] === true
@@ -434,6 +576,34 @@ const SortableElement = memo(function SortableElement({
       <div ref={contentRef} className="build-page__canvas-element-content">
         {comp.render(element.variants, element.properties, element.states, (name, value) => onPropertyChange(element.id, name, value))}
       </div>
+      {isSelected && element.componentId === 'camper-card' && (
+        <div className="widget-actions" onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className="widget-actions__btn widget-actions__btn--ai"
+            aria-label="Edit Widget"
+          >
+            <Icon name="ai-pencil-filled" category="ai" size={20} />
+            <span className="widget-actions__label">Edit Widget</span>
+          </button>
+          <button
+            type="button"
+            className="widget-actions__btn widget-actions__btn--settings"
+            onClick={() => onOpenProperties(element.id)}
+            aria-label="Open properties"
+          >
+            <Icon name="gear-filled" category="general" size={20} />
+          </button>
+          <button
+            type="button"
+            className="widget-actions__btn widget-actions__btn--delete"
+            onClick={() => onRemove(element.id)}
+            aria-label="Delete widget"
+          >
+            <Icon name="trash-filled" category="general" size={20} />
+          </button>
+        </div>
+      )}
       {dropEdge && <DropIndicator edge={dropEdge} gap="16px" />}
     </section>
   )
@@ -526,6 +696,251 @@ function DroppablePage({
         </section>
       )}
       {children}
+    </div>
+  )
+}
+
+function AiWidgetCard({ onClick }: { onClick?: () => void }) {
+  return (
+    <div className="build-page__ai-widget">
+      <button type="button" className="build-page__ai-widget-card" onClick={onClick}>
+        <img src={podoAvatar} alt="" className="build-page__ai-widget-avatar" />
+        <div className="build-page__ai-widget-text">
+          <div className="build-page__ai-widget-title-row">
+            <span className="build-page__ai-widget-title">Create widget with</span>
+            <span className="build-page__ai-widget-badge">AI</span>
+          </div>
+          <span className="build-page__ai-widget-subtitle">Tell your need, get it instantly</span>
+        </div>
+        <Icon name="angle-right" category="arrows" size={24} />
+      </button>
+    </div>
+  )
+}
+
+type AiWidgetTab = 'general' | 'data' | 'condition'
+
+interface AiWidgetConnectedTable {
+  id: string
+  label: string
+  tableName: string
+}
+
+const CAMPER_CARD_TABLES: AiWidgetConnectedTable[] = [
+  { id: 't1', label: 'Registered Children', tableName: 'Registered Children' },
+  { id: 't2', label: 'Camper Registration', tableName: 'Camper Registration' },
+  { id: 't3', label: 'Camper Registration', tableName: 'Camper Immunization Record' },
+  { id: 't4', label: 'Camper Healthcare Information', tableName: 'Camper Healthcare Information' },
+]
+
+function AiWidgetPropertiesPanel({
+  element,
+  component,
+  onClose,
+  onPropertyChange,
+  onDuplicate,
+}: {
+  element: CanvasElement
+  component: RegisteredComponent
+  onClose: () => void
+  onPropertyChange: (elementId: string, property: string, value: string | boolean | number) => void
+  onDuplicate: () => void
+}) {
+  const [activeTab, setActiveTab] = useState<AiWidgetTab>('general')
+  const shrinked = element.properties['Shrinked'] === true
+  const canShrink = component.properties.some((p) => p.name === 'Shrinked')
+
+  return (
+    <div className="ai-props">
+      <div className="ai-props__header">
+        <h2 className="ai-props__title">AI Widget Properties</h2>
+        <button type="button" className="ai-props__close" onClick={onClose} aria-label="Close">
+          <Icon name="xmark" category="general" size={20} />
+        </button>
+      </div>
+
+      <div className="ai-props__widget-info">
+        <div className="ai-props__widget-icon">
+          <div className="ai-props__widget-icon-inner" />
+          <div className="ai-props__widget-icon-gear">
+            <Icon name="gear-filled" category="general" size={14} />
+          </div>
+        </div>
+        <div className="ai-props__widget-meta">
+          <div className="ai-props__widget-name">{component.name}</div>
+          <div className="ai-props__widget-subtitle">Manage Availability</div>
+        </div>
+      </div>
+
+      <div className="ai-props__tabs" role="tablist">
+        {(['general', 'data', 'condition'] as AiWidgetTab[]).map((tab) => (
+          <button
+            key={tab}
+            type="button"
+            role="tab"
+            className={`ai-props__tab${activeTab === tab ? ' ai-props__tab--active' : ''}`}
+            onClick={() => setActiveTab(tab)}
+            aria-selected={activeTab === tab}
+          >
+            {tab.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
+      <div className="ai-props__body">
+        {activeTab === 'general' && (
+          <>
+            {canShrink && (
+              <div className="ai-props__row">
+                <div className="ai-props__row-text">
+                  <div className="ai-props__row-title">Shrink</div>
+                  <div className="ai-props__row-desc">Make element smaller.</div>
+                </div>
+                <button
+                  type="button"
+                  className={`ai-props__toggle${shrinked ? ' ai-props__toggle--on' : ''}`}
+                  onClick={() => onPropertyChange(element.id, 'Shrinked', !shrinked)}
+                  aria-pressed={shrinked}
+                >
+                  <span className="ai-props__toggle-handle" />
+                  <span className="ai-props__toggle-label">{shrinked ? 'ON' : 'OFF'}</span>
+                </button>
+              </div>
+            )}
+            <div className="ai-props__row ai-props__row--block">
+              <div className="ai-props__row-text">
+                <div className="ai-props__row-title">Duplicate Element</div>
+                <div className="ai-props__row-desc">Clone selected elements with all saved properties.</div>
+              </div>
+              <button type="button" className="ai-props__duplicate-btn" onClick={onDuplicate}>
+                <Icon name="copy-filled" category="general" size={16} />
+                <span>Duplicate</span>
+              </button>
+            </div>
+          </>
+        )}
+
+        {activeTab === 'data' && (
+          <div className="ai-props__data">
+            <div className="ai-props__row-text">
+              <div className="ai-props__section-title">Connected Tables</div>
+              <div className="ai-props__row-desc">This widget shows data from Tables</div>
+            </div>
+            {CAMPER_CARD_TABLES.map((t) => (
+              <div key={t.id} className="ai-props__table-group">
+                <div className="ai-props__table-label">{t.label}</div>
+                <div className="ai-props__table-card">
+                  <div className="ai-props__table-card-top">
+                    <div className="ai-props__table-icon">
+                      <Icon name="table" category="general" size={18} />
+                    </div>
+                    <div className="ai-props__table-name">{t.tableName}</div>
+                    <button type="button" className="ai-props__table-open" aria-label="Open table">
+                      <Icon name="arrow-up-right-from-square-sm" category="arrows" size={14} />
+                    </button>
+                  </div>
+                  <div className="ai-props__table-actions">
+                    <button type="button" className="ai-props__btn ai-props__btn--primary">Match Fields</button>
+                    <button type="button" className="ai-props__btn ai-props__btn--ghost">Change Table</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'condition' && (
+          <div className="ai-props__empty">
+            <div className="ai-props__row-desc">No conditions set.</div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function GeneratingWidgetBanner() {
+  return (
+    <div className="generating-widget-banner" role="status" aria-live="polite">
+      <img src={podoAvatar} alt="" className="generating-widget-banner__avatar" />
+      <span className="generating-widget-banner__text">Generating widget with AI...</span>
+    </div>
+  )
+}
+
+function AiSparkleIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10.83 2.5 12 6.67 16.17 7.83 12 9 10.83 13.17 9.67 9 5.5 7.83 9.67 6.67z" fill="currentColor"/>
+      <path d="M4.58 12.5 5.17 14.42 7.08 15 5.17 15.58 4.58 17.5 4 15.58 2.08 15 4 14.42z" fill="currentColor"/>
+      <path d="M15.42 12.08 15.83 13.33 17.08 13.75 15.83 14.17 15.42 15.42 15 14.17 13.75 13.75 15 13.33z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function AiWidgetModal({ open, onClose, onGenerate }: { open: boolean; onClose: () => void; onGenerate: (prompt: string) => void }) {
+  const [description, setDescription] = useState('')
+
+  useEffect(() => {
+    if (!open) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [open, onClose])
+
+  useEffect(() => {
+    if (!open) setDescription('')
+  }, [open])
+
+  if (!open) return null
+
+  const canGenerate = description.trim().length > 0
+
+  const handleGenerate = () => {
+    if (!canGenerate) return
+    onGenerate(description.trim())
+  }
+
+  return (
+    <div className="ai-widget-modal__overlay" onClick={onClose}>
+      <div className="ai-widget-modal" role="dialog" aria-modal="true" aria-label="Create widget with AI" onClick={(e) => e.stopPropagation()}>
+        <div className="ai-widget-modal__header">
+          <img src={podoAvatar} alt="" className="ai-widget-modal__avatar" />
+          <div className="ai-widget-modal__header-text">
+            <div className="ai-widget-modal__title-row">
+              <span className="ai-widget-modal__title">Create widget with</span>
+              <span className="build-page__ai-widget-badge">AI</span>
+            </div>
+            <span className="ai-widget-modal__subtitle">Tell your need, get it instantly</span>
+          </div>
+          <button type="button" className="ai-widget-modal__close" onClick={onClose} aria-label="Close">
+            <Icon name="xmark" category="general" size={20} />
+          </button>
+        </div>
+        <div className="ai-widget-modal__body">
+          <label className="ai-widget-modal__label" htmlFor="ai-widget-description">Describe your Widget</label>
+          <textarea
+            id="ai-widget-description"
+            className="ai-widget-modal__textarea"
+            placeholder="e.g A widget with a checkbox list that tracks completion progress automatically"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div className="ai-widget-modal__footer">
+          <button
+            type="button"
+            className="ai-widget-modal__generate"
+            disabled={!canGenerate}
+            onClick={handleGenerate}
+          >
+            <AiSparkleIcon size={20} />
+            <span>Generate</span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
@@ -733,6 +1148,25 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
   }, [appTitle, appSubtitle])
 
   const [activeTab, setActiveTab] = useState<'basic' | 'widgets'>('basic')
+  const [aiWidgetModalOpen, setAiWidgetModalOpen] = useState(false)
+  const [generatingWidget, setGeneratingWidget] = useState(false)
+
+  const handleAiGenerate = useCallback((_prompt: string) => {
+    setAiWidgetModalOpen(false)
+    setGeneratingWidget(true)
+    window.setTimeout(() => {
+      setGeneratingWidget(false)
+      const comp = ComponentRegistry.get('camper-card')
+      if (!comp) return
+      const element = createCanvasElement(comp, nextElementId(pagesRef.current))
+      setPages((prev) => prev.map((page) =>
+        page.id === activePageId
+          ? { ...page, elements: [...page.elements, element] }
+          : page
+      ))
+      setSelectedElementId(element.id)
+    }, 4000)
+  }, [activePageId])
 
   const componentMap = components.reduce<Record<string, RegisteredComponent>>((acc, comp) => {
     if (!HIDDEN_ELEMENTS.includes(comp.id)) acc[comp.id] = comp
@@ -798,8 +1232,17 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
 
   const handleSelectElement = useCallback((elementId: string) => {
     setSelectedElementId(elementId)
-    setRightPanel('properties')
     setMobileElementsSheet(false)
+    const page = pagesRef.current.find((p) => p.elements.some((el) => el.id === elementId))
+    const el = page?.elements.find((e) => e.id === elementId)
+    if (el?.componentId !== 'camper-card') {
+      setRightPanel('properties')
+    }
+  }, [])
+
+  const handleOpenProperties = useCallback((elementId: string) => {
+    setSelectedElementId(elementId)
+    setRightPanel('properties')
   }, [])
 
   const handleRemoveElement = useCallback((elementId: string) => {
@@ -868,6 +1311,24 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [selectedElementId, handleRemoveElement])
+
+  const handleDuplicateElement = useCallback((elementId: string) => {
+    setPages((prev) => prev.map((page) => {
+      const idx = page.elements.findIndex((el) => el.id === elementId)
+      if (idx === -1) return page
+      const orig = page.elements[idx]
+      const dup: CanvasElement = {
+        ...orig,
+        id: nextElementId(prev),
+        properties: { ...orig.properties },
+        variants: { ...orig.variants },
+        states: { ...orig.states },
+      }
+      const elements = [...page.elements]
+      elements.splice(idx + 1, 0, dup)
+      return { ...page, elements }
+    }))
+  }, [])
 
   const handlePropertyChange = useCallback((elementId: string, name: string, value: string | boolean | number) => {
     setPages((prev) =>
@@ -1048,7 +1509,27 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
         </div>
         <TabMenu activeTab={activeTab} onTabChange={setActiveTab} />
         <div className="build-page__elements">
-          {activeGroups.map((group, groupIndex) => {
+          {activeTab === 'widgets' && <AiWidgetCard onClick={() => setAiWidgetModalOpen(true)} />}
+          {activeTab === 'widgets' && (
+            <>
+              <div className="build-page__separator">WIDGETS</div>
+              <hr className="build-page__element-divider" />
+              {MOCK_WIDGETS.map((w, i) => (
+                <div key={w.id}>
+                  <div className="build-page__element-item build-page__element-item--widget">
+                    <div className="build-page__element-icon build-page__element-icon--color" style={{ background: w.bg }}>
+                      {w.render()}
+                    </div>
+                    <div className="build-page__element-content">
+                      <span className="build-page__element-name">{w.name}</span>
+                    </div>
+                  </div>
+                  {i < MOCK_WIDGETS.length - 1 && <hr className="build-page__element-divider" />}
+                </div>
+              ))}
+            </>
+          )}
+          {activeTab === 'basic' && activeGroups.map((group, groupIndex) => {
             const validItems = group.elementIds
               .map((id) => componentMap[id])
               .filter(Boolean)
@@ -1056,9 +1537,11 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
 
             return (
               <div key={group.label || groupIndex}>
+                {groupIndex > 0 && <hr className="build-page__element-divider" />}
                 {group.label && (
                   <div className="build-page__separator">{group.label}</div>
                 )}
+                {group.label && <hr className="build-page__element-divider" />}
                 {validItems.map((comp, itemIndex) => {
                   const iconInfo = ELEMENT_ICON_MAP[comp.id]
                   return (
@@ -1174,9 +1657,16 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
                                 partnerSwapEdge={swapEdge}
                                 onSelect={handleSelectElement}
                                 onPropertyChange={handlePropertyChange}
+                                onOpenProperties={handleOpenProperties}
+                                onRemove={handleRemoveElement}
                               />
                             )
                           })}
+                          {generatingWidget && page.id === activePageId && (
+                            <section className="themes-view__section themes-view__section--center build-page__generating-slot">
+                              <GeneratingWidgetBanner />
+                            </section>
+                          )}
                         </DroppablePage>
                       )
                     })()}
@@ -1238,7 +1728,18 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
           {/* Slide 1: Live Preview / Properties */}
           <div className="build-page__right-slide">
             {/* Properties Panel */}
-            {rightPanel === 'properties' && selectedElement && selectedComponent ? (
+            {rightPanel === 'properties' && selectedElement && selectedComponent && selectedComponent.id === 'camper-card' ? (
+              <AiWidgetPropertiesPanel
+                element={selectedElement}
+                component={selectedComponent}
+                onClose={() => {
+                  setRightPanel('preview')
+                  setSelectedElementId(null)
+                }}
+                onPropertyChange={handlePropertyChange}
+                onDuplicate={() => handleDuplicateElement(selectedElement.id)}
+              />
+            ) : rightPanel === 'properties' && selectedElement && selectedComponent ? (
               <div className="build-page__properties">
                 <div className="build-page__panel-header">
                   <h2>{selectedComponent.name}</h2>
@@ -1459,7 +1960,20 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
     >
       <div className="mobile-elements-sheet v2-sheet">
         <TabMenu activeTab={activeTab} onTabChange={setActiveTab} />
-        {activeGroups.map((group, groupIndex) => {
+        {activeTab === 'widgets' && <AiWidgetCard onClick={() => { setMobileElementsSheet(false); setAiWidgetModalOpen(true) }} />}
+        {activeTab === 'widgets' && (
+          <div className="mobile-elements-grid">
+            {MOCK_WIDGETS.map((w) => (
+              <button key={w.id} type="button" className="mobile-elements-grid__item">
+                <div className="mobile-elements-grid__icon mobile-elements-grid__icon--color" style={{ background: w.bg }}>
+                  {w.render()}
+                </div>
+                <span className="mobile-elements-grid__label">{w.name.replace('\n', ' ')}</span>
+              </button>
+            ))}
+          </div>
+        )}
+        {activeTab === 'basic' && activeGroups.map((group, groupIndex) => {
           const validItems = group.elementIds.map((id) => componentMap[id]).filter(Boolean)
           if (validItems.length === 0) return null
           return (
@@ -1493,6 +2007,8 @@ export function BuildPage({ previewMode = true, appTitle: appTitleProp = 'App Ti
         })}
       </div>
     </BottomSheet>
+
+    <AiWidgetModal open={aiWidgetModalOpen} onClose={() => setAiWidgetModalOpen(false)} onGenerate={handleAiGenerate} />
 
     </>
   )

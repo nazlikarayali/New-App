@@ -39,6 +39,7 @@ import './components/LoginSignup/register';
 import './components/BottomNavigation/register';
 import './components/Paragraph/register';
 import './components/ProgressIndicator/register';
+import './components/CamperCard/register';
 import './components/Spacer/register';
 
 // Individual component exports
@@ -63,6 +64,7 @@ export { Testimonial } from './components/Testimonial';
 export { SocialFollow } from './components/SocialFollow';
 export { DailyTaskManager } from './components/DailyTaskManager';
 export { ProgressIndicator } from './components/ProgressIndicator';
+export { CamperCard } from './components/CamperCard';
 export { Spacer } from './components/Spacer';
 
 // Layout
